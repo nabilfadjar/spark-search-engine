@@ -19,11 +19,11 @@ class Post(val toBeParsed: String) {
     }
 
     def getId() : Int = {
-        return postMap.getPost.get("Id").getOrElse(null)
+        return postMap.get("Id").getOrElse(null)
     }
 
     def getBody() : String = {
-        return postMap.getPost.get("Body").getOrElse(null)
+        return postMap.get("Body").getOrElse(null)
     }
 }
 
