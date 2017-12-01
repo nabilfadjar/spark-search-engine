@@ -36,3 +36,6 @@ def readXMLFile() : Array[String] = {
 
 // Quick Code
 // var posts = readXMLFile.map(row => new Post(row)).filterNot(_.getPost() == null)
+// var wordTuple = posts.flatMap(_.getBody.split(" ")).map(word => (word,1)).reduceByKey(word,count => (word+count))
+// var idf = (Math.log(totalPosts) - Math.log(wordCount))/Math.log(Math.E)
+// var idfArr = reduced.map(eachTuple => (Math.log(totalPosts) - Math.log(eachTuple._2))/Math.log(Math.E))
