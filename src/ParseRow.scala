@@ -33,3 +33,6 @@ def readXMLFile() : Array[String] = {
     xmlSource.close
     return posts
 }
+
+// Quick Code
+// var posts = readXMLFile.map(row => new Post(row)).filterNot(_.getPost() == null)
