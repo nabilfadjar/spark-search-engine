@@ -17,6 +17,14 @@ class Post(val toBeParsed: String) {
     def getPost() :Map[String,String] = {
         return postMap
     }
+
+    def getId() : Int = {
+        return postMap.getPost.get("Id").getOrElse(null)
+    }
+
+    def getBody() : String = {
+        return postMap.getPost.get("Body").getOrElse(null)
+    }
 }
 
 def readXMLFile() : Array[String] = {
