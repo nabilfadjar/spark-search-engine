@@ -19,5 +19,5 @@ These are the set of rules we can apply:
  - Check if each row contains a valid and unique ID. This approach can be done be collating all the row IDs as key/value pair and check if the length of the result set of key/value pair is equal the the number of posts given (length of the number of valid posts rows)
 
 
- ## Indexing dataset
- This step is crucial for a search engine for allowing fast access to the data set essentially acheiving a near `O(1)` time complexitiy
+## Indexing dataset
+This step is crucial for a search engine for allowing fast access to the data set essentially acheiving a near `O(1)` time complexitiy
