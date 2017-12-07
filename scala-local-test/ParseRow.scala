@@ -1,3 +1,5 @@
+#!/usr/bin/env scala
+
 import scala.io.Source
 
 class Post(val toBeParsed: String) {
