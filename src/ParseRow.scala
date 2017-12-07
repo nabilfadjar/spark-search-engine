@@ -1,5 +1,3 @@
-import scala.io.Source
-
 class Post(val toBeParsed: String) {
     private var postMap = if(isHeaderOrFooter()) null else transformIntoMap()
 
@@ -25,13 +23,6 @@ class Post(val toBeParsed: String) {
     def getBody() : String = {
         return postMap.get("Body").getOrElse(null)
     }
-}
-
-def readXMLFile() : Array[String] = {
-    val xmlSource = Source.fromFile("sample_data/Posts.xml")
-    val posts = xmlSource.getLines.toArray
-    xmlSource.close
-    return posts
 }
 
 // Quick Code
