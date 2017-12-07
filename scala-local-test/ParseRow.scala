@@ -43,4 +43,4 @@ def readXMLFile() : Array[String] = {
 // var idfArr = reduced.map(eachTuple => (Math.log(totalPosts) - Math.log(eachTuple._2))/Math.log(Math.E))
 
 // Regex
-sampleBody.replaceAll("(&[\\S]*;)|(&lt;[\\S]*&gt;)", " ").replaceAll("(a href)|(rel)", " ").replaceAll("[\\W\\s\\d]"," ").split(" ").filter(_.nonEmpty)
+//sampleBody.replaceAll("(&[\\S]*;)|(&lt;[\\S]*&gt;)", " ").replaceAll("(a href)|(rel)", " ").replaceAll("[\\W\\s\\d]"," ").split(" ").filter(_.nonEmpty)
