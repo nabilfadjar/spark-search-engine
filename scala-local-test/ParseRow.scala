@@ -30,7 +30,7 @@ class Post(val toBeParsed: String) {
 }
 
 def readXMLFile() : Array[String] = {
-    val xmlSource = Source.fromFile("sample_data/Posts.xml")
+    val xmlSource = Source.fromFile("../sample_data/Posts.xml")
     val posts = xmlSource.getLines.toArray
     xmlSource.close
     return posts
@@ -41,3 +41,6 @@ def readXMLFile() : Array[String] = {
 // var wordTuple = posts.flatMap(_.getBody.split(" ")).map(word => (word,1)).reduceByKey(word,count => (word+count))
 // var idf = (Math.log(totalPosts) - Math.log(wordCount))/Math.log(Math.E)
 // var idfArr = reduced.map(eachTuple => (Math.log(totalPosts) - Math.log(eachTuple._2))/Math.log(Math.E))
+
+// Regex
+sampleBody.replaceAll("(&[\\S]*;)|(&lt;[\\S]*&gt;)", " ").replaceAll("(a href)|(rel)", " ").replaceAll("[\\W\\s\\d]"," ").split(" ").filter(_.nonEmpty)
