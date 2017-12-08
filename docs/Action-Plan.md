@@ -8,7 +8,7 @@ The data set being used is the Stack Overflow Data set from 2017. This can be fo
 
 More information on the data set can be found in this [link](https://archive.org/details/stackexchange).
 
-More metadata related information can be found in this [link](https://archive.org/download/stackexchange/readme.txt)
+More metadata related information can be found in this [link](https://archive.org/download/stackexchange/readme.txt).
 
 ## Parsing XML Data
 Originaly, we were given a sample Java code to parse XML into a map data structure:
@@ -63,3 +63,5 @@ These are the set of rules we can apply:
 This step is crucial for a search engine for allowing fast access to the data set essentially acheiving a near `O(1)` time complexitiy.
 
 The Inverted Index data set would be produced through implementating TF-IDF (Term Frequency - Inverse Document Frequency)
+
+Fore more information, visit this [link](http://www.tfidf.com/).
