@@ -1,5 +1,8 @@
 # Action Plan
 
+## Big Data Engine
+We are using Apache Spark with Scala for processing our data set.
+
 ## Data Set
 The data set being used is the Stack Overflow Data set from 2017. This can be found in QMUL's HDFS at `/data/stackOverflow2017`.
 
@@ -56,5 +59,7 @@ These are the set of rules we can apply:
  - Check if each row contains a valid and unique ID. This approach can be done be collating all the row IDs as key/value pair and check if the length of the result set of key/value pair is equal the the number of posts given (length of the number of valid posts rows)
 
 
-## Indexing dataset
-This step is crucial for a search engine for allowing fast access to the data set essentially acheiving a near `O(1)` time complexitiy
+## Inverted Index Data set
+This step is crucial for a search engine for allowing fast access to the data set essentially acheiving a near `O(1)` time complexitiy.
+
+The Inverted Index data set would be produced through implementating TF-IDF (Term Frequency - Inverse Document Frequency)
