@@ -32,6 +32,10 @@ class Post(val toBeParsed: String) {
     def getWordsFromBody() : Array[String] = {
         if (getBody() == null) return null else return getBody().toLowerCase.replaceAll("&lt;code&gt;", "").replaceAll("(&[\\S]*;)|(&lt;[\\S]*&gt;)", " ").replaceAll("[\\s](a href)|(rel)[\\s]", " ").replaceAll("(?!([\\w]*'[\\w]))([\\W_\\s\\d])+"," ").split(" ").filter(_.nonEmpty)
     }
+
+    def getNumberOfWordsInPost() : Int = {
+        return getWordsFromBody().size
+    }
 }
 
 def readXMLFile() : Array[String] = {

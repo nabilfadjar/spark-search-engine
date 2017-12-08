@@ -2,10 +2,6 @@ class Post(val toBeParsed: String) {
     private var postMap = if(isHeaderOrFooter()) null else transformIntoMap()
 
     private def transformIntoMap() : Map[String, String] = {
-        // var preParsedRow = toBeParsed.split('"').map(_.replace("<row","")).map(_.replace("/>","")).map(_.trim).filterNot(_.isEmpty)
-        // var postHeader = preParsedRow.filter(_.endsWith("=")).map(_.replace("=", ""))
-        // var postContent = preParsedRow.filterNot(_.endsWith("="))
-        // return (postHeader zip postContent).toMap
         return toBeParsed.split("(=\")|(\"[\\s])|(<[\\w]*)|(/>)").map(_.trim).filter(_.nonEmpty).grouped(2).collect { case Array(k, v) => k -> v }.toMap
     }
 
