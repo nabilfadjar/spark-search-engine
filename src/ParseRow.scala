@@ -1,6 +1,5 @@
 class Post(val toBeParsed: String) {
-    private val postMap = if(isHeaderOrFooter()) null else transformIntoMap()
-    private val wordsInBody = extractWordsFromBody()
+    private var postMap = if(isHeaderOrFooter()) null else transformIntoMap()
 
     private def transformIntoMap() : Map[String, String] = {
         return toBeParsed.split("(=\")|(\"[\\s])|(<[\\w]*)|(/>)").map(_.trim).filter(_.nonEmpty).grouped(2).collect { case Array(k, v) => k -> v }.toMap
@@ -15,22 +14,14 @@ class Post(val toBeParsed: String) {
     }
 
     def getId() : Int = {
-        if (getMap() == null) return -1 else return postMap.get("Id").getOrElse("-1").toInt
+        return postMap.get("Id").getOrElse("-1").toInt
     }
 
     def getBody() : String = {
-        if (getMap() == null) return null else return postMap.get("Body").getOrElse(null)
-    }
-
-    private def extractWordsFromBody() : Array[String] = {
-        if (getBody() == null) return null else return getBody().toLowerCase.replaceAll("&lt;code&gt;", "").replaceAll("(&[\\S]*;)|(&lt;[\\S]*&gt;)", " ").replaceAll("[\\s](a href)|(rel)[\\s]", " ").replaceAll("(?!([\\w]*'[\\w]))([\\W_\\s\\d])+"," ").split(" ").filter(_.nonEmpty)
+        return postMap.get("Body").getOrElse(null)
     }
 
     def getWordsFromBody() : Array[String] = {
-        if (wordsInBody == null) return null else return wordsInBody
-    }
-
-    def getNumberOfWordsInPost() : Int = {
-        return getWordsFromBody().length
+        if (getBody() == null) return null else return getBody().toLowerCase.replaceAll("&lt;code&gt;", "").replaceAll("(&[\\S]*;)|(&lt;[\\S]*&gt;)", " ").replaceAll("[\\s](a href)|(rel)[\\s]", " ").replaceAll("(?!([\\w]*'[\\w]))([\\W_\\s\\d])+"," ").split(" ").filter(_.nonEmpty)
     }
 }
