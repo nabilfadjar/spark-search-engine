@@ -3,12 +3,18 @@ object initTfIdf extends App {
     val sample_data_loc = "spark-search-engine/sample_data/Posts.xml"
     // val main_data_loc = "/data/stackOverflow2017/Posts.xml"
 
+    // Location of Sequence Files
+    val sample_index_loc = "spark-search-engine/sample_index"
+    // val main_index_loc = "spark-search-engine/index"
+    // sc.saveAsObjectFile(sample_index_loc) // Save RDDs as Spark Objects (Sequence Files)
+    // sc.objectFile(sample_index_loc + "/") // Load Spark Objects (Sequence Files) as RDDs
+
     // Parse XML posts as Post Objects
     var posts = sc.textFile(sample_data_loc).map(row => new Post(row)).filter(_.getMap() != null)
     val posts_count = sc.broadcast(posts.count().toDouble)
 
     // Create Word Tuple for Word Count
-    var wordTuple = posts.flatMap(_.getWordsFromBody().distinct).map(word => (word,1)).reduceByKey((a,b) => (a+b))
+    var wordTuple = posts.flatMap(_.getW ordsFromBody().distinct).map(word => (word,1)).reduceByKey((a,b) => (a+b))
 
     // Generate TF Set
     var tf_set = posts.flatMap(eachPost => eachPost.getWordsFromBody().map(word => ((word, eachPost.getId), 1.0/eachPost.getNumberOfWordsInPost))).reduceByKey((a,b) => (a+b))
@@ -33,9 +39,11 @@ object initTfIdf extends App {
     //
 
     //Get TF-IDF for Query
-    val query = "the"
-    val query_tf = 1
-    val query_idf = idf_set.filter(_._1 == query).collect()(0)._2
+    val query_string = "java code"
+    val query = sc.parallelize(query_string.split(" "))
+    val query_size = sc.broadcast(query.count().toDouble)
+    val query_tf = query.map(query_term => (query_term, 1.0/query_size.value)).reduceByKey((a,b) => (a+b))
+    val query_idf = query.map(query_term => (query_term, 1)).join(idf_set)
     val query_tf_idf = query_tf * query_idf
 
     //Get Post TF-IDF
