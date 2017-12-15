@@ -15,7 +15,7 @@ object query_engine extends App {
     val tf_idf_set_opt_list = sc.objectFile[(String, (Int, Double))](sample_index_loc + "/tf_idf")
 
     //Get TF-IDF for Query
-    val query_string = "java code"
+    val query_string = "big head"
     val query = sc.parallelize(query_string.toLowerCase.split(" "))
     val query_size = sc.broadcast(query.count().toDouble)
     val query_tf = query.map(query_term => (query_term, 1.0/query_size.value)).reduceByKey((a,b) => (a+b))
