@@ -65,3 +65,8 @@ This step is crucial for a search engine for allowing fast access to the data se
 The Inverted Index data set would be produced through implementating TF-IDF (Term Frequency - Inverse Document Frequency)
 
 Fore more information, visit this [link](http://www.tfidf.com/).
+
+## SBT Packaging
+Open the following links:
+https://alvinalexander.com/scala/how-to-create-sbt-project-directory-structure-scala
+https://alvinalexander.com/scala/sbt-how-to-compile-run-package-scala-project
