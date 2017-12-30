@@ -534,3 +534,20 @@ query_size: org.apache.spark.broadcast.Broadcast[Double] = Broadcast(3)
 query_tf: org.apache.spark.rdd.RDD[(String, Double)] = ShuffledRDD[6] at reduceByKey at <console>:46
 query_tf_idf: org.apache.spark.rdd.RDD[(String, Double)] = MapPartitionsRDD[10] at map at <console>:47
 query_ecd_distance: org.apache.spark.broadcast.Broa...
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+    val posts_filter_cos = posts_filter_tf_idf_set.map(each_tf_idf_term_doc => (each_tf_idf_term_doc._2._2._1, ((each_tf_idf_term_doc._2._1 * each_tf_idf_term_doc._2._2._2), Math.pow(each_tf_idf_term_doc._2._2._2,2.0)) )).reduceByKey((a,b) => ((a._1+b._1), (a._2+b._2))).map(doc => (doc._1,(doc._2._1/(query_ecd_distance.value * Math.sqrt(doc._2._2)))))
+
+
+// Exiting paste mode, now interpreting.
+
+posts_filter_cos: org.apache.spark.rdd.RDD[(Int, Double)] = MapPartitionsRDD[32] at map at <console>:47
+
+scala> posts_filter_cos.foreach(println)
+(253,0.7331494108168898)
+(371,0.6800676006242671)
+(308,0.680067600624267)
+(197,0.680067600624267)
+(129,0.7331494108168897)
