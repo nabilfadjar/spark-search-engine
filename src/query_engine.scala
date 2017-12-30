@@ -15,13 +15,14 @@ object query_engine extends App {
     val tf_idf_set_opt_list = sc.objectFile[(String, (Int, Double))](sample_index_loc + "/tf_idf")
 
     //Get TF-IDF for Query
-    val query_string = "big head"
-    val query = sc.parallelize(query_string.toLowerCase.split(" "))
+    val query_string = "&lt;p&gt;When is it not cool to make an appropriate to use an unsigned variable over a signed one? What about in a &lt;code&gt;for&lt;/code&gt; loop?&lt;/p&gt;&#xA;&#xA;&lt;p&gt;I hear a lot of opinions about this and I wanted to see if there was anything resembling a consensus. &lt;/p&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;for (unsigned int i = 0; i &amp;lt; someThing.length(); i++) {  &#xA;    SomeThing var = someThing.at(i);  &#xA;    // You get the idea.  &#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;p&gt;I know Java doesn't have unsigned values, and that must have been a concious decision on &lt;a href=&quot;https://en.wikipedia.org/wiki/Sun_Microsystems&quot; rel=&quot;noreferrer&quot;&gt;Sun Microsystems&lt;/a&gt;' part. &lt;/p&gt;&#xA;"
+    val filtered_query = query_string.toLowerCase.replaceAll("&lt;code&gt;", "").replaceAll("(&[\\S]*;)|(&lt;[\\S]*&gt;)", " ").replaceAll("[\\s](a href)|(rel)[\\s]", " ").replaceAll("(?!([\\w]*'[\\w]))([\\W_\\s\\d])+"," ").split(" ").filter(_.nonEmpty)
+    val query = sc.parallelize(filtered_query)
     val query_size = sc.broadcast(query.count().toDouble)
     val query_tf = query.map(query_term => (query_term, 1.0/query_size.value)).reduceByKey((a,b) => (a+b))
     val query_tf_idf = query_tf.join(idf_set).map(word => (word._1, word._2._1 * word._2._2))
 
-    // Euclidean distance for Queries
+    // Euclidean distance for Query
     val query_ecd_distance = sc.broadcast(Math.sqrt(query_tf_idf.map(eachQuery => Math.pow(eachQuery._2, 2.0)).reduce(_ + _)))
 
     //Get Post TF-IDF
@@ -36,9 +37,6 @@ object query_engine extends App {
     // Cosine Similarity = Dot Product / Cosine Similarity
     // Formula = (query_tf_idf * post_tf_idf) / ( Math.sqrt(pow(query_tf_idf,2.0)) + Math.sqrt(pow(post_tf_idf,2.0)) )
     val posts_filter_cos = posts_filter_tf_idf_set.map(each_tf_idf_term_doc => (each_tf_idf_term_doc._2._2._1, ((each_tf_idf_term_doc._2._1 * each_tf_idf_term_doc._2._2._2), Math.pow(each_tf_idf_term_doc._2._2._2,2.0)) )).reduceByKey((a,b) => ((a._1+b._1), (a._2+b._2))).map(doc => (doc._1,(doc._2._1/(query_ecd_distance.value * Math.sqrt(doc._2._2)))))
-
-    // OLD:
-    // val posts_filter_cos = posts_filter_tf_idf_set.map(each_tf_idf_term_doc => (each_tf_idf_term_doc._2._2._1, ((each_tf_idf_term_doc._2._1 * each_tf_idf_term_doc._2._2._2), Math.pow(each_tf_idf_term_doc._2._1,2.0), Math.pow(each_tf_idf_term_doc._2._2._2,2.0)) )).reduceByKey((a,b) => ((a._1+b._1), (a._2+b._2), (a._3+b._3))).map(doc => (doc._1,(doc._2._1/(Math.sqrt(doc._2._2) * Math.sqrt(doc._2._3)))))
 
     val posts_filter_cos_sort = posts_filter_cos.map(row => (row._2, row)).sortByKey(false).map(row => (row._2))
     posts_filter_cos.foreach(println)
