@@ -1,4 +1,14 @@
+package runtime
+
+import parser.Post
+
+import org.apache.spark._
+
 object GenerateTfIdf extends App {
+    // Init App
+    val conf = new SparkConf().setAppName("Spark Search Engine: Generate TF-IDF")
+    val sc = new SparkContext(conf)
+
     // Location of Data
     val sample_data_loc = "spark-search-engine/sample_data/Posts.xml"
     // val main_data_loc = "/data/stackOverflow2017/Posts.xml"
@@ -39,4 +49,7 @@ object GenerateTfIdf extends App {
     // Save TF-IDF set into HDFS
     idf_set.saveAsObjectFile(index_loc + "/idf") // Save IDF Set
     tf_idf_set_opt_list.saveAsObjectFile(index_loc + "/tf_idf") // Save TF_IDF Set
+
+    // Stop Spark
+    sc.stop()
 }
