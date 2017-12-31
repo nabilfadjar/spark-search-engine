@@ -2,6 +2,7 @@ object QueryEngine {
     def main(args: Array[String]) {
         if (args.length != 2) {
             System.err.println("Usage: QueryEngine [--main|--sample] <query>")
+            sc.stop()
         }
         // Init App
         val conf = new SparkConf().setAppName("Spark Search Engine: Query Engine")
@@ -22,6 +23,7 @@ object QueryEngine {
         }
         else {
             System.err.println("Usage: QueryEngine [--main|--sample] <query>")
+            sc.stop()
         }
 
         //

@@ -41,6 +41,7 @@ object GenerateTfIdf {
     def main(args: Array[String]) {
         if (args.length != 1) {
             System.err.println("Usage: GenerateTfIdf [--main|--sample]")
+            sc.stop()
         }
         // Init App
         val conf = new SparkConf().setAppName("Spark Search Engine: Generate TF-IDF")
