@@ -1,5 +1,3 @@
-package parser
-
 class Post(val toBeParsed: String) {
     private val postMap = if(isHeaderOrFooter()) null else transformIntoMap()
     private val wordsInBody = extractWordsFromBody()

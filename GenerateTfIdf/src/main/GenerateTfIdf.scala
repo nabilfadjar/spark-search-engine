@@ -1,6 +1,4 @@
-package runtime
-
-import parser.Post
+import Post
 
 import org.apache.spark._
 
