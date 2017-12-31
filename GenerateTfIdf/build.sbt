@@ -2,7 +2,7 @@
 // http://www.scala-sbt.org/0.13/docs/index.html
 
 // Project name
-name := "generateIndex"
+name := "GenerateTfIdf"
 
 // Don't forget to set the version
 version := "1.0.0-SNAPSHOT"
