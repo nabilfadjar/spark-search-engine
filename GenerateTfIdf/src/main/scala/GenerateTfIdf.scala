@@ -1,4 +1,4 @@
-import Post
+import .Post
 
 import org.apache.spark._
 
