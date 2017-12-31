@@ -9,7 +9,7 @@ object QueryEngine {
 
         // Location of Sequence Files
         val index_loc_list = Map("main" -> "spark-search-engine/index", "sample" -> "spark-search-engine/sample_index")
-        val index_loc = index_loc_list("sample")
+        var index_loc = index_loc_list("sample")
         // sc.saveAsObjectFile(index_loc) // Save RDDs as Spark Objects (Sequence Files)
         // sc.objectFile(index_loc + "/") // Load Spark Objects (Sequence Files) as RDDs
 
