@@ -39,13 +39,14 @@ class Post(val toBeParsed: String) {
 
 object GenerateTfIdf {
     def main(args: Array[String]) {
-        if (args.length != 1) {
-            System.err.println("Usage: GenerateTfIdf [--main|--sample]")
-            sc.stop() // Must come after init sc
-        }
         // Init App
         val conf = new SparkConf().setAppName("Spark Search Engine: Generate TF-IDF")
         val sc = new SparkContext(conf)
+
+        if (args.length != 1) {
+            System.err.println("Usage: GenerateTfIdf [--main|--sample]")
+            sc.stop()
+        }
 
         // Location of Data
         val data_loc_list = Map("main" -> "/data/stackOverflow2017/Posts.xml", "sample" -> "spark-search-engine/sample_data/Posts.xml")

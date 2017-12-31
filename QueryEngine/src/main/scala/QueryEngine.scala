@@ -1,12 +1,13 @@
 object QueryEngine {
     def main(args: Array[String]) {
+        // Init App
+        val conf = new SparkConf().setAppName("Spark Search Engine: Query Engine")
+        val sc = new SparkContext(conf)
+
         if (args.length != 2) {
             System.err.println("Usage: QueryEngine [--main|--sample] <query>")
             sc.stop()
         }
-        // Init App
-        val conf = new SparkConf().setAppName("Spark Search Engine: Query Engine")
-        val sc = new SparkContext(conf)
 
         // Location of Sequence Files
         val index_loc_list = Map("main" -> "spark-search-engine/index", "sample" -> "spark-search-engine/sample_index")
