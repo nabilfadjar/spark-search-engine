@@ -55,12 +55,12 @@ object GenerateTfIdf {
         // sc.objectFile(index_loc + "/") // Load Spark Objects (Sequence Files) as RDDs
 
         if(args(0) == "--main"){
-            val data_loc = data_loc_list.main
-            val index_loc = index_loc_list.main
+            val data_loc = data_loc_list("main")
+            val index_loc = index_loc_list("main")
         }
         else if(args(0) == "--sample"){
-            val data_loc = data_loc_list.sample
-            val index_loc = index_loc_list.sample
+            val data_loc = data_loc_list("sample")
+            val index_loc = index_loc_list("sample")
         }
         else {
             System.err.println("Usage: GenerateTfIdf [--main|--sample]")

@@ -14,10 +14,10 @@ object QueryEngine {
 
         query_string = args(1)
         if(args(0) == "--main"){
-            val index_loc = index_loc_list.main
+            val index_loc = index_loc_list("main")
         }
         else if(args(0) == "--sample"){
-            val index_loc = index_loc_list.sample
+            val index_loc = index_loc_list("sample")
         }
         else {
             System.err.println("Usage: QueryEngine [--main|--sample] <query>")
