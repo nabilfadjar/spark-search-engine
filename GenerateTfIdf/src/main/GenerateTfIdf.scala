@@ -1,4 +1,4 @@
-object initTfIdf extends App {
+object GenerateTfIdf extends App {
     // Location of Data
     val sample_data_loc = "spark-search-engine/sample_data/Posts.xml"
     // val main_data_loc = "/data/stackOverflow2017/Posts.xml"
