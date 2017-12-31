@@ -1,4 +1,4 @@
-object QueryEngine extends App {
+object QueryEngine {
     def main(args: Array[String]) {
         // Location of Sequence Files
         val sample_index_loc = "spark-search-engine/sample_index"

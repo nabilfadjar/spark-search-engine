@@ -37,7 +37,7 @@ class Post(val toBeParsed: String) {
     }
 }
 
-object GenerateTfIdf extends App {
+object GenerateTfIdf {
     def main(args: Array[String]) {
         // Init App
         val conf = new SparkConf().setAppName("Spark Search Engine: Generate TF-IDF")
