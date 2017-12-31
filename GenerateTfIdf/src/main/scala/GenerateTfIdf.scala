@@ -48,19 +48,22 @@ object GenerateTfIdf {
 
         // Location of Data
         val data_loc_list = Map("main" -> "/data/stackOverflow2017/Posts.xml", "sample" -> "spark-search-engine/sample_data/Posts.xml")
+        val data_loc = data_loc_list("sample")
 
         // Location of Sequence Files
         val index_loc_list = Map("main" -> "spark-search-engine/index", "sample" -> "spark-search-engine/sample_index")
+        val index_loc = index_loc_list("sample")
+
         // sc.saveAsObjectFile(index_loc) // Save RDDs as Spark Objects (Sequence Files)
         // sc.objectFile(index_loc + "/") // Load Spark Objects (Sequence Files) as RDDs
 
         if(args(0) == "--main"){
-            val data_loc = data_loc_list("main")
-            val index_loc = index_loc_list("main")
+            data_loc = data_loc_list("main")
+            index_loc = index_loc_list("main")
         }
         else if(args(0) == "--sample"){
-            val data_loc = data_loc_list("sample")
-            val index_loc = index_loc_list("sample")
+            data_loc = data_loc_list("sample")
+            index_loc = index_loc_list("sample")
         }
         else {
             System.err.println("Usage: GenerateTfIdf [--main|--sample]")

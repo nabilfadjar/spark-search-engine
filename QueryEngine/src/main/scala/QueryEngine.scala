@@ -9,15 +9,16 @@ object QueryEngine {
 
         // Location of Sequence Files
         val index_loc_list = Map("main" -> "spark-search-engine/index", "sample" -> "spark-search-engine/sample_index")
+        val index_loc = index_loc_list("sample")
         // sc.saveAsObjectFile(index_loc) // Save RDDs as Spark Objects (Sequence Files)
         // sc.objectFile(index_loc + "/") // Load Spark Objects (Sequence Files) as RDDs
 
         query_string = args(1)
         if(args(0) == "--main"){
-            val index_loc = index_loc_list("main")
+            index_loc = index_loc_list("main")
         }
         else if(args(0) == "--sample"){
-            val index_loc = index_loc_list("sample")
+            index_loc = index_loc_list("sample")
         }
         else {
             System.err.println("Usage: QueryEngine [--main|--sample] <query>")
