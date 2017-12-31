@@ -467,4 +467,412 @@ scala> idfArr.take(10).foreach(println)
 4.59511985013459
 3.6788291182604347
 
+//
+// NEW LOG - 30/12/2017
+//
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+    // Location of Sequence Files
+    val sample_index_loc = "spark-search-engine/sample_index"
+    // val main_index_loc = "spark-search-engine/index"
+    val index_loc = sample_index_loc
+    // sc.saveAsObjectFile(index_loc) // Save RDDs as Spark Objects (Sequence Files)
+    // sc.objectFile(index_loc + "/") // Load Spark Objects (Sequence Files) as RDDs
+
+    //
+    // Cosine Similarity
+    //
+
+    // Load IDF, TF_IDF Sets
+    val idf_set = sc.objectFile[(String, Double)](sample_index_loc + "/idf")
+    val tf_idf_set_opt_list = sc.objectFile[(String, (Int, Double))](sample_index_loc + "/tf_idf")
+
+    //Get TF-IDF for Query
+    val query_string = "big head"
+    val query = sc.parallelize(query_string.toLowerCase.split(" "))
+    val query_size = sc.broadcast(query.count().toDouble)
+    val query_tf = query.map(query_term => (query_term, 1.0/query_size.value)).reduceByKey((a,b) => (a+b))
+    val query_tf_idf = query_tf.join(idf_set).map(word => (word._1, word._2._1 * word._2._2))
+
+    // Euclidean distance for Queries
+    val query_ecd_distance = sc.broadcast(Math.sqrt(query_tf_idf.map(eachQuery => Math.pow(eachQuery._2, 2.0)).reduce(_ + _)))
+
+    //Get Post TF-IDF
+    //val posts_idf = query_idf
+    val posts_filter_tf_idf_set = query_tf_idf.join(tf_idf_set_opt_list)
+
+    // Sample
+    // (code,(0.8278593324990533,(199,0.007701017046502822)))
+    // (java,(1.6069316415223283,(89,0.08240675084729888)))
+    // Dot Product = (query_tf_idf_1 * post_tf_idf) + (query_tf_idf_2 * post_tf_idf) ... + (query_tf_idf_n * post_tf_idf)
+    // Euclidean distance = Math.sqrt(Math.pow(query_tf_idf_1,2) + Math.pow(query_tf_idf_2,2) ... + + Math.pow(query_tf_idf_n,2))
+    // Cosine Similarity = Dot Product / Cosine Similarity
+    // Formula = (query_tf_idf * post_tf_idf) / ( Math.sqrt(pow(query_tf_idf,2.0)) + Math.sqrt(pow(post_tf_idf,2.0)) )
+    val posts_filter_cos = posts_filter_tf_idf_set.map(each_tf_idf_term_doc => (each_tf_idf_term_doc._2._2._1, ((each_tf_idf_term_doc._2._1 * each_tf_idf_term_doc._2._2._2), Math.pow(each_tf_idf_term_doc._2._2._2,2.0)) )).reduceByKey((a,b) => ((a._1+b._1), (a._2+b._2))).map(doc => (doc._1,(doc._2._1/query_ecd_distance.value * Math.sqrt(doc._2._2))))
+
+    // OLD:
+    // val posts_filter_cos = posts_filter_tf_idf_set.map(each_tf_idf_term_doc => (each_tf_idf_term_doc._2._2._1, ((each_tf_idf_term_doc._2._1 * each_tf_idf_term_doc._2._2._2), Math.pow(each_tf_idf_term_doc._2._1,2.0), Math.pow(each_tf_idf_term_doc._2._2._2,2.0)) )).reduceByKey((a,b) => ((a._1+b._1), (a._2+b._2), (a._3+b._3))).map(doc => (doc._1,(doc._2._1/(Math.sqrt(doc._2._2) * Math.sqrt(doc._2._3)))))
+
+    val posts_filter_cos_sort = posts_filter_cos.map(row => (row._2, row)).sortByKey(false).map(row => (row._2))
+    posts_filter_cos.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+(253,0.015923033241532443)
+(371,0.0012959190001708388)
+(308,9.49821901631347E-4)
+(197,7.738028740689513E-4)
+(129,5.0679671142791E-4)
+sample_index_loc: String = spark-search-engine/sample_index
+index_loc: String = spark-search-engine/sample_index
+idf_set: org.apache.spark.rdd.RDD[(String, Double)] = MapPartitionsRDD[1] at objectFile at <console>:39
+tf_idf_set_opt_list: org.apache.spark.rdd.RDD[(String, (Int, Double))] = MapPartitionsRDD[3] at objectFile at <console>:40
+query_string: String = big head
+query: org.apache.spark.rdd.RDD[String] = ParallelCollectionRDD[4] at parallelize at <console>:44
+query_size: org.apache.spark.broadcast.Broadcast[Double] = Broadcast(3)
+query_tf: org.apache.spark.rdd.RDD[(String, Double)] = ShuffledRDD[6] at reduceByKey at <console>:46
+query_tf_idf: org.apache.spark.rdd.RDD[(String, Double)] = MapPartitionsRDD[10] at map at <console>:47
+query_ecd_distance: org.apache.spark.broadcast.Broa...
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+    val posts_filter_cos = posts_filter_tf_idf_set.map(each_tf_idf_term_doc => (each_tf_idf_term_doc._2._2._1, ((each_tf_idf_term_doc._2._1 * each_tf_idf_term_doc._2._2._2), Math.pow(each_tf_idf_term_doc._2._2._2,2.0)) )).reduceByKey((a,b) => ((a._1+b._1), (a._2+b._2))).map(doc => (doc._1,(doc._2._1/(query_ecd_distance.value * Math.sqrt(doc._2._2)))))
+
+
+// Exiting paste mode, now interpreting.
+
+posts_filter_cos: org.apache.spark.rdd.RDD[(Int, Double)] = MapPartitionsRDD[32] at map at <console>:47
+
+scala> posts_filter_cos.foreach(println)
+(253,0.7331494108168898)
+(371,0.6800676006242671)
+(308,0.680067600624267)
+(197,0.680067600624267)
+(129,0.7331494108168897)
+
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+    // Location of Sequence Files
+    val sample_index_loc = "spark-search-engine/sample_index"
+    // val main_index_loc = "spark-search-engine/index"
+    val index_loc = sample_index_loc
+    // sc.saveAsObjectFile(index_loc) // Save RDDs as Spark Objects (Sequence Files)
+    // sc.objectFile(index_loc + "/") // Load Spark Objects (Sequence Files) as RDDs
+
+    //
+    // Cosine Similarity
+    //
+
+    // Load IDF, TF_IDF Sets
+    val idf_set = sc.objectFile[(String, Double)](sample_index_loc + "/idf")
+    val tf_idf_set_opt_list = sc.objectFile[(String, (Int, Double))](sample_index_loc + "/tf_idf")
+
+    //Get TF-IDF for Query
+    // val query_string = "I am"
+    //
+    val query_string = "&lt;p&gt;When is it appropriate to use an unsigned variable over a signed one? What about in a &lt;code&gt;for&lt;/code&gt; loop?&lt;/p&gt;&#xA;&#xA;&lt;p&gt;I hear a lot of opinions about this and I wanted to see if there was anything resembling a consensus. &lt;/p&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;for (unsigned int i = 0; i &amp;lt; someThing.length(); i++) {  &#xA;    SomeThing var = someThing.at(i);  &#xA;    // You get the idea.  &#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;p&gt;I know Java doesn't have unsigned values, and that must have been a concious decision on &lt;a href=&quot;https://en.wikipedia.org/wiki/Sun_Microsystems&quot; rel=&quot;noreferrer&quot;&gt;Sun Microsystems&lt;/a&gt;' part. &lt;/p&gt;&#xA;"
+    val x = query_string.toLowerCase.replaceAll("&lt;code&gt;", "").replaceAll("(&[\\S]*;)|(&lt;[\\S]*&gt;)", " ").replaceAll("[\\s](a href)|(rel)[\\s]", " ").replaceAll("(?!([\\w]*'[\\w]))([\\W_\\s\\d])+"," ").split(" ").filter(_.nonEmpty)
+    val query = sc.parallelize(x)
+    //
+    // val query = sc.parallelize(query_string.toLowerCase.split(" "))
+    val query_size = sc.broadcast(query.count().toDouble)
+    val query_tf = query.map(query_term => (query_term, 1.0/query_size.value)).reduceByKey((a,b) => (a+b))
+    val query_tf_idf = query_tf.join(idf_set).map(word => (word._1, word._2._1 * word._2._2))
+
+    // Euclidean distance for Queries
+    val query_ecd_distance = sc.broadcast(Math.sqrt(query_tf_idf.map(eachQuery => Math.pow(eachQuery._2, 2.0)).reduce(_ + _)))
+
+    //Get Post TF-IDF
+    //val posts_idf = query_idf
+    val posts_filter_tf_idf_set = query_tf_idf.join(tf_idf_set_opt_list)
+
+    // Sample
+    // (code,(0.8278593324990533,(199,0.007701017046502822)))
+    // (java,(1.6069316415223283,(89,0.08240675084729888)))
+    // Dot Product = (query_tf_idf_1 * post_tf_idf) + (query_tf_idf_2 * post_tf_idf) ... + (query_tf_idf_n * post_tf_idf)
+    // Euclidean distance = Math.sqrt(Math.pow(query_tf_idf_1,2) + Math.pow(query_tf_idf_2,2) ... + + Math.pow(query_tf_idf_n,2))
+    // Cosine Similarity = Dot Product / Cosine Similarity
+    // Formula = (query_tf_idf * post_tf_idf) / ( Math.sqrt(pow(query_tf_idf,2.0)) + Math.sqrt(pow(post_tf_idf,2.0)) )
+    val posts_filter_cos = posts_filter_tf_idf_set.map(each_tf_idf_term_doc => (each_tf_idf_term_doc._2._2._1, ((each_tf_idf_term_doc._2._1 * each_tf_idf_term_doc._2._2._2), Math.pow(each_tf_idf_term_doc._2._2._2,2.0)) )).reduceByKey((a,b) => ((a._1+b._1), (a._2+b._2))).map(doc => (doc._1,(doc._2._1/(query_ecd_distance.value * Math.sqrt(doc._2._2)))))
+
+    // OLD:
+    // val posts_filter_cos = posts_filter_tf_idf_set.map(each_tf_idf_term_doc => (each_tf_idf_term_doc._2._2._1, ((each_tf_idf_term_doc._2._1 * each_tf_idf_term_doc._2._2._2), Math.pow(each_tf_idf_term_doc._2._1,2.0), Math.pow(each_tf_idf_term_doc._2._2._2,2.0)) )).reduceByKey((a,b) => ((a._1+b._1), (a._2+b._2), (a._3+b._3))).map(doc => (doc._1,(doc._2._1/(Math.sqrt(doc._2._2) * Math.sqrt(doc._2._3)))))
+
+    val posts_filter_cos_sort = posts_filter_cos.map(row => (row._2, row)).sortByKey(false).map(row => (row._2))
+    posts_filter_cos.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+(147,0.2939412712760496)
+(19,0.2605275176998012)
+(39,0.28003317043795145)
+(384,0.30109051180730007)
+(451,0.27381323369051425)
+(297,0.20042716278105904)
+(71,0.24963337104696254)
+(180,0.28091072528245553)
+(66,0.21901918069223927)
+(307,0.2510002398050652)
+(170,0.14516070922965071)
+(11,0.3099054105213807)
+(14,0.12499022903906075)
+(235,0.17261713878700968)
+(24,0.29527224067397384)
+(146,0.30103302108763746)
+(212,0.23101535873616982)
+(195,0.3351117002415831)
+(291,0.21630940529617615)
+(17,0.21581725483985156)
+(12,0.16994794829670884)
+(192,0.21922231213660406)
+(100,0.2575814248920258)
+(160,0.28452341302059503)
+(330,0.3957393965848249)
+(21,0.27429206500324116)
+(112,0.31118753830351675)
+(139,0.28995847983576145)
+(332,0.3260946982512135)
+(367,0.38541613201057795)
+(77,0.3514114454899307)
+(331,0.20686297162337433)
+(22,0.20998019303214777)
+(59,0.32221127146691275)
+(347,0.5282774311177297)
+(194,0.297615191307212)
+(411,0.1437841239501495)
+(93,0.13225823227400044)
+(113,0.30981459070632483)
+(126,0.44677409695274334)
+(165,0.20651817984712975)
+(58,0.14696756492223442)
+(31,0.2252152055060687)
+(363,0.2786865639256058)
+(388,0.2658448410548312)
+(338,0.1759692471118985)
+(81,0.1946268021382998)
+(229,0.388225523776858)
+(387,0.30234947667167755)
+(419,0.3437903490598851)
+(82,0.2538820887363524)
+(231,0.3330531732425598)
+(29,0.27152254682063853)
+(79,0.37913447780168485)
+(98,0.23355250030690689)
+(263,0.3882883207787124)
+(30,0.20864473861807198)
+(127,0.18379533968162995)
+(246,0.2449855302997855)
+(92,0.17560299011081276)
+(161,0.34553826665317705)
+(266,0.1576040167176246)
+(110,0.32886728686721073)
+(336,1.0)
+(149,0.1678787304702343)
+(292,0.2523046832077874)
+(344,0.19745912715991942)
+(354,0.18204673428026344)
+(375,0.3000892402587405)
+(72,0.24185031192092646)
+(427,0.09806808838504572)
+(9,0.2973850549861937)
+(49,0.18887101004452608)
+(78,0.22353423669797085)
+(274,0.15095887997983098)
+(109,0.4240875684646001)
+(167,0.17506957416675137)
+(84,0.1828034339862873)
+(56,0.22304149427549075)
+(337,0.34262209909575697)
+(397,0.25645883182153373)
+(76,0.3223438001203574)
+(243,0.23901332624771654)
+(310,0.2837279438362376)
+(329,0.17661041900484745)
+(430,0.18999335055407787)
+(73,0.26572450981853035)
+(371,0.3976459522494104)
+(227,0.30424141826241413)
+(124,0.3547309272357072)
+(164,0.19820251843924797)
+(438,0.2522653465707378)
+(206,0.16576655682549704)
+(382,0.29071729623933235)
+(141,0.28311550298213994)
+(143,0.3097594427461553)
+(7,0.09936086207296209)
+(174,0.322668798468716)
+(44,0.3036386484273629)
+(88,0.38857064396707375)
+(151,0.1479001984938211)
+(34,0.3728204999141725)
+(4,0.33910144285822535)
+(153,0.13361200141203894)
+(412,0.09430814648751028)
+(134,0.3867634042845609)
+(265,0.3062514849282389)
+(289,0.3765630887206042)
+(80,0.2405057363460562)
+(359,0.19272652749126842)
+(65,0.10408693355687205)
+(104,0.2682729338457696)
+(352,0.27225926853153803)
+(111,0.26223251662556923)
+(152,0.3659814904462472)
+(175,0.28105056514434146)
+(396,0.1941761501895168)
+(236,0.14291389140825939)
+(89,0.16335760501888727)
+(90,0.10793916838066038)
+(238,0.23490018863868514)
+(402,0.1234792938432893)
+(18,0.26708284234456414)
+(342,0.3448378532440353)
+(268,0.21670655284507456)
+(103,0.2561704460861581)
+(339,0.4888112996582534)
+(199,0.2687698097680714)
+(269,0.37130541173574105)
+(99,0.27015461300204874)
+(145,0.1887602084413873)
+(253,0.1543461186063578)
+(120,0.24078208327467487)
+(169,0.31043409530129934)
+(53,0.25572670105040013)
+(25,0.46087819616417885)
+(166,0.2316240676129168)
+(142,0.24945724748209339)
+(62,0.18492052875172288)
+(33,0.19241089764513902)
+(264,0.2239568316523986)
+(190,0.2782637874616296)
+(304,0.2442532996601051)
+(6,0.310354000545385)
+(135,0.3154040787707107)
+(85,0.36114515329421226)
+(86,0.18699993538797266)
+(123,0.16962262697446645)
+(114,0.09792416064242054)
+(60,0.3433705683097564)
+(308,0.39716532813023986)
+(176,0.3502229938622723)
+(328,0.25756354364105327)
+(26,0.25662927936102065)
+(87,0.34536297302048824)
+(197,0.28556789089397505)
+(360,0.23548345429696557)
+(391,0.22909215799895158)
+(13,0.25684393130107885)
+(52,0.2829804253130164)
+(298,0.1425931939936721)
+(16,0.3789846889915053)
+(407,0.2795455074833995)
+(158,0.08320714158488501)
+(107,0.28656330952060344)
+(36,0.28703795315489833)
+(51,0.1707048337501945)
+(133,0.20911008381483262)
+(154,0.2338958729807544)
+(45,0.24020978531862747)
+(362,0.21520462269472926)
+(290,0.2780562213283501)
+(173,0.27796807917213906)
+(183,0.12675314851824826)
+(364,0.27705128667555157)
+(108,0.38799230579830823)
+(148,0.2379107718085179)
+(159,0.2501762799572869)
+(61,0.3624902505295678)
+(116,0.40109670850177215)
+(48,0.2580110231661739)
+(128,0.24411092529049444)
+(207,0.13780563007898636)
+(260,0.40058811952844253)
+(27,0.26917100904930474)
+(233,0.20671977513608783)
+(42,0.42681683399452824)
+(210,0.3196659259417275)
+(258,0.23896213113256284)
+(335,0.20025634086616279)
+(163,0.3159552110329554)
+(361,0.32595881650576514)
+(392,0.22645699644049852)
+(234,0.28631600304207927)
+(356,0.410661144121986)
+(68,0.23477739696516994)
+(155,0.2920391373664377)
+(129,0.4537229789552008)
+sample_index_loc: String = spark-search-engine/sample_index
+index_loc: String = spark-search-engine/sample_index
+idf_set: org.apache.spark.rdd.RDD[(String, Double)] = MapPartitionsRDD[44] at objectFile at <console>:61
+tf_idf_set_opt_list: org.apache.spark.rdd.RDD[(String, (Int, Double))] = MapPartitionsRDD[46] at objectFile at <console>:62
+query_string: String = &lt;p&gt;When is it appropriate to use an unsigned variable over a signed one? What about in a &lt;code&gt;for&lt;/code&gt; loop?&lt;/p&gt;&#xA;&#xA;&lt;p&gt;I hear a lot of opinions about this and I wanted to see if there was anything resembling a consensus. &lt;/p&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;for (unsigned int i = 0; i &amp;lt; someThing.length(); i++) {  &#xA;    SomeThing var = someThing.at(i);  &#xA;    // You get th...
+scala>
+
+
+scala>
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+    // Location of Sequence Files
+    val sample_index_loc = "spark-search-engine/sample_index"
+    // val main_index_loc = "spark-search-engine/index"
+    val index_loc = sample_index_loc
+    // sc.saveAsObjectFile(index_loc) // Save RDDs as Spark Objects (Sequence Files)
+    // sc.objectFile(index_loc + "/") // Load Spark Objects (Sequence Files) as RDDs
+
+    //
+    // Cosine Similarity
+    //
+
+    // Load IDF, TF_IDF Sets
+    val idf_set = sc.objectFile[(String, Double)](sample_index_loc + "/idf")
+    val tf_idf_set_opt_list = sc.objectFile[(String, (Int, Double))](sample_index_loc + "/tf_idf")
+
+    //Get TF-IDF for Query
+    // val query_string = "I am"
+    //
+    val query_string = "&lt;p&gt;When is it not cool to make an appropriate to use an unsigned variable over a signed one? What about in a &lt;code&gt;for&lt;/code&gt; loop?&lt;/p&gt;&#xA;&#xA;&lt;p&gt;I hear a lot of opinions about this and I wanted to see if there was anything resembling a consensus. &lt;/p&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;for (unsigned int i = 0; i &amp;lt; someThing.length(); i++) {  &#xA;    SomeThing var = someThing.at(i);  &#xA;    // You get the idea.  &#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;p&gt;I know Java doesn't have unsigned values, and that must have been a concious decision on &lt;a href=&quot;https://en.wikipedia.org/wiki/Sun_Microsystems&quot; rel=&quot;noreferrer&quot;&gt;Sun Microsystems&lt;/a&gt;' part. &lt;/p&gt;&#xA;"
+    val x = query_string.toLowerCase.replaceAll("&lt;code&gt;", "").replaceAll("(&[\\S]*;)|(&lt;[\\S]*&gt;)", " ").replaceAll("[\\s](a href)|(rel)[\\s]", " ").replaceAll("(?!([\\w]*'[\\w]))([\\W_\\s\\d])+"," ").split(" ").filter(_.nonEmpty)
+    val query = sc.parallelize(x)
+    //
+    // val query = sc.parallelize(query_string.toLowerCase.split(" "))
+    val query_size = sc.broadcast(query.count().toDouble)
+    val query_tf = query.map(query_term => (query_term, 1.0/query_size.value)).reduceByKey((a,b) => (a+b))
+    val query_tf_idf = query_tf.join(idf_set).map(word => (word._1, word._2._1 * word._2._2))
+
+    // Euclidean distance for Queries
+    val query_ecd_distance = sc.broadcast(Math.sqrt(query_tf_idf.map(eachQuery => Math.pow(eachQuery._2, 2.0)).reduce(_ + _)))
+
+    //Get Post TF-IDF
+    //val posts_idf = query_idf
+    val posts_filter_tf_idf_set = query_tf_idf.join(tf_idf_set_opt_list)
+
+    // Sample
+    // (code,(0.8278593324990533,(199,0.007701017046502822)))
+    // (java,(1.6069316415223283,(89,0.08240675084729888)))
+    // Dot Product = (query_tf_idf_1 * post_tf_idf) + (query_tf_idf_2 * post_tf_idf) ... + (query_tf_idf_n * post_tf_idf)
+    // Euclidean distance = Math.sqrt(Math.pow(query_tf_idf_1,2) + Math.pow(query_tf_idf_2,2) ... + + Math.pow(query_tf_idf_n,2))
+    // Cosine Similarity = Dot Product / Cosine Similarity
+    // Formula = (query_tf_idf * post_tf_idf) / ( Math.sqrt(pow(query_tf_idf,2.0)) + Math.sqrt(pow(post_tf_idf,2.0)) )
+    val posts_filter_cos = posts_filter_tf_idf_set.map(each_tf_idf_term_doc => (each_tf_idf_term_doc._2._2._1, ((each_tf_idf_term_doc._2._1 * each_tf_idf_term_doc._2._2._2), Math.pow(each_tf_idf_term_doc._2._2._2,2.0)) )).reduceByKey((a,b) => ((a._1+b._1), (a._2+b._2))).map(doc => (doc._1,(doc._2._1/(query_ecd_distance.value * Math.sqrt(doc._2._2)))))
+
+    // OLD:
+    // val posts_filter_cos = posts_filter_tf_idf_set.map(each_tf_idf_term_doc => (each_tf_idf_term_doc._2._2._1, ((each_tf_idf_term_doc._2._1 * each_tf_idf_term_doc._2._2._2), Math.pow(each_tf_idf_term_doc._2._1,2.0), Math.pow(each_tf_idf_term_doc._2._2._2,2.0)) )).reduceByKey((a,b) => ((a._1+b._1), (a._2+b._2), (a._3+b._3))).map(doc => (doc._1,(doc._2._1/(Math.sqrt(doc._2._2) * Math.sqrt(doc._2._3)))))
+
+    val posts_filter_cos_sort = posts_filter_cos.map(row => (row._2, row)).sortByKey(false).map(row => (row._2))
+    posts_filter_cos.filter(_._1 ==336).foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+(336,0.9909440880027335)
+sample_index_loc: String = spark-search-engine/sample_index
+index_loc: String = spark-search-engine/sample_index
+idf_set: org.apache.spark.rdd.RDD[(String, Double)] = MapPartitionsRDD[65] at objectFile at <console>:63
+tf_idf_set_opt_list: org.apache.spark.rdd.RDD[(String, (Int, Double))] = MapPartitionsRDD[67] at objectFile at <console>:64
+query_string: String = &lt;p&gt;When is it not cool to make an appropriate to use an unsigned variable over a signed one? What about in a &lt;code&gt;for&lt;/code&gt; loop?&lt;/p&gt;&#xA;&#xA;&lt;p&gt;I hear a lot of opinions about this and I wanted to see if there was anything resembling a consensus. &lt;/p&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;for (unsigned int i = 0; i &amp;lt; someThing.length(); i++) {  &#xA;    SomeThing var = someThing.at(i);  &#...
 scala>
