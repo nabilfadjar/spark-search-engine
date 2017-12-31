@@ -1,22 +1,37 @@
 object QueryEngine {
     def main(args: Array[String]) {
+        if (args.length != 2) {
+            System.err.println("Usage: QueryEngine [--main|--sample] <query>")
+        }
+        // Init App
+        val conf = new SparkConf().setAppName("Spark Search Engine: Query Engine")
+        val sc = new SparkContext(conf)
+
         // Location of Sequence Files
-        val sample_index_loc = "spark-search-engine/sample_index"
-        // val main_index_loc = "spark-search-engine/index"
-        val index_loc = sample_index_loc
+        val index_loc_list = Map("main" -> "spark-search-engine/index", "sample" -> "spark-search-engine/sample_index")
         // sc.saveAsObjectFile(index_loc) // Save RDDs as Spark Objects (Sequence Files)
         // sc.objectFile(index_loc + "/") // Load Spark Objects (Sequence Files) as RDDs
+
+        query_string = args(1)
+        if(args(0) == "--main"){
+            val index_loc = index_loc_list.main
+        }
+        else if(args(0) == "--sample"){
+            val index_loc = index_loc_list.sample
+        }
+        else {
+            System.err.println("Usage: QueryEngine [--main|--sample] <query>")
+        }
 
         //
         // Cosine Similarity
         //
 
         // Load IDF, TF_IDF Sets
-        val idf_set = sc.objectFile[(String, Double)](sample_index_loc + "/idf")
-        val tf_idf_set_opt_list = sc.objectFile[(String, (Int, Double))](sample_index_loc + "/tf_idf")
+        val idf_set = sc.objectFile[(String, Double)](index_loc + "/idf")
+        val tf_idf_set_opt_list = sc.objectFile[(String, (Int, Double))](index_loc + "/tf_idf")
 
         //Get TF-IDF for Query
-        val query_string = "&lt;p&gt;When is it not cool to make an appropriate to use an unsigned variable over a signed one? What about in a &lt;code&gt;for&lt;/code&gt; loop?&lt;/p&gt;&#xA;&#xA;&lt;p&gt;I hear a lot of opinions about this and I wanted to see if there was anything resembling a consensus. &lt;/p&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;for (unsigned int i = 0; i &amp;lt; someThing.length(); i++) {  &#xA;    SomeThing var = someThing.at(i);  &#xA;    // You get the idea.  &#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;p&gt;I know Java doesn't have unsigned values, and that must have been a concious decision on &lt;a href=&quot;https://en.wikipedia.org/wiki/Sun_Microsystems&quot; rel=&quot;noreferrer&quot;&gt;Sun Microsystems&lt;/a&gt;' part. &lt;/p&gt;&#xA;"
         val filtered_query = query_string.toLowerCase.replaceAll("&lt;code&gt;", "").replaceAll("(&[\\S]*;)|(&lt;[\\S]*&gt;)", " ").replaceAll("[\\s](a href)|(rel)[\\s]", " ").replaceAll("(?!([\\w]*'[\\w]))([\\W_\\s\\d])+"," ").split(" ").filter(_.nonEmpty)
         val query = sc.parallelize(filtered_query)
         val query_size = sc.broadcast(query.count().toDouble)

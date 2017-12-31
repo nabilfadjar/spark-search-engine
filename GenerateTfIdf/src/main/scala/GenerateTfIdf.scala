@@ -39,21 +39,32 @@ class Post(val toBeParsed: String) {
 
 object GenerateTfIdf {
     def main(args: Array[String]) {
+        if (args.length != 1) {
+            System.err.println("Usage: GenerateTfIdf [--main|--sample]")
+        }
         // Init App
         val conf = new SparkConf().setAppName("Spark Search Engine: Generate TF-IDF")
         val sc = new SparkContext(conf)
 
         // Location of Data
-        val sample_data_loc = "spark-search-engine/sample_data/Posts.xml"
-        // val main_data_loc = "/data/stackOverflow2017/Posts.xml"
-        val data_loc = sample_data_loc
+        val data_loc_list = Map("main" -> "/data/stackOverflow2017/Posts.xml", "sample" -> "spark-search-engine/sample_data/Posts.xml")
 
         // Location of Sequence Files
-        val sample_index_loc = "spark-search-engine/sample_index"
-        // val main_index_loc = "spark-search-engine/index"
-        val index_loc = sample_index_loc
+        val index_loc_list = Map("main" -> "spark-search-engine/index", "sample" -> "spark-search-engine/sample_index")
         // sc.saveAsObjectFile(index_loc) // Save RDDs as Spark Objects (Sequence Files)
         // sc.objectFile(index_loc + "/") // Load Spark Objects (Sequence Files) as RDDs
+
+        if(args(0) == "--main"){
+            val data_loc = data_loc_list.main
+            val index_loc = index_loc_list.main
+        }
+        else if(args(0) == "--sample"){
+            val data_loc = data_loc_list.sample
+            val index_loc = index_loc_list.sample
+        }
+        else {
+            System.err.println("Usage: GenerateTfIdf [--main|--sample]")
+        }
 
         // Parse XML posts as Post Objects
         var posts = sc.textFile(data_loc).map(row => new Post(row)).filter(_.getMap() != null)
