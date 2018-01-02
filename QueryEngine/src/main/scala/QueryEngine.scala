@@ -15,7 +15,7 @@ object QueryEngine {
         // sc.saveAsObjectFile(index_loc) // Save RDDs as Spark Objects (Sequence Files)
         // sc.objectFile(index_loc + "/") // Load Spark Objects (Sequence Files) as RDDs
 
-        query_string = args(1)
+        val query_string = args(1)
         if(args(0) == "--main"){
             index_loc = index_loc_list("main")
         }
