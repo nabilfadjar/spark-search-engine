@@ -1,3 +1,5 @@
+import org.apache.spark._
+
 object QueryEngine {
     def main(args: Array[String]) {
         // Init App
