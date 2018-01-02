@@ -90,7 +90,7 @@ object GenerateTfIdf {
         // Generate TF-IDF Set
         // Method 1: Resulting Dataset is (word, (ID,TF-IDF)), (word, (ID,TF-IDF)), (word, (ID,TF-IDF)), ..., (word, (ID,TF-IDF))
         var tf_idf_set = tf_set_preJoin.join(idf_set).map(pre_tf_idf => (pre_tf_idf._1, (pre_tf_idf._2._1._1, (pre_tf_idf._2._1._2 * pre_tf_idf._2._2))))
-        var tf_idf_set_opt_list = tf_idf_set.map(row => (row._2._2, row)).sortByKey(false).map(row => (row._2)).sortByKey()
+        // var tf_idf_set_opt_list = tf_idf_set.map(row => (row._2._2, row)).sortByKey(false).map(row => (row._2)).sortByKey()
 
         // Method 2 (Not Being Used): Resulting Dataset is (word, CompactBuffer((ID,TF-IDF), (ID,TF-IDF), (ID,TF-IDF), ..., (ID,TF-IDF)))
         // var tf_idf_set = tf_set_preJoin.join(idf_set).map(pre_tf_idf => (pre_tf_idf._1, (pre_tf_idf._2._1._1, (pre_tf_idf._2._1._2 * pre_tf_idf._2._2))))
@@ -98,7 +98,7 @@ object GenerateTfIdf {
 
         // Save TF-IDF set into HDFS
         idf_set.saveAsObjectFile(index_loc + "/idf") // Save IDF Set
-        tf_idf_set_opt_list.saveAsObjectFile(index_loc + "/tf_idf") // Save TF_IDF Set
+        tf_idf_set.saveAsObjectFile(index_loc + "/tf_idf") // Save TF_IDF Set
 
         // Stop Spark
         sc.stop()
