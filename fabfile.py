@@ -16,8 +16,8 @@ def package_tf_idf():
 
 def package_query_engine():
     print("Packaging all Query Engine into JAR file...")
-        with cd('QueryEngine/'):
-            local("sbt clean package")
+    with cd('QueryEngine/'):
+        local("sbt clean package")
 
 def run_tf_idf():
     print("[MAIN] Sumbitting job to Spark for Generating TF-IDF...")
