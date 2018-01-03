@@ -20,8 +20,13 @@ def package_tf_idf():
         local("sbt clean package")
 
 def package_query_engine():
-    print("Packaging all Query Engine into JAR file...")
+    print("Packaging Query Engine into JAR file...")
     with lcd('QueryEngine/'):
+        local("sbt clean package")
+
+def package_tf_idf_query_combo():
+    print("Packaging TF-IDF / Query Engine Combo into JAR file...")
+    with lcd('TfIdfQueryEnigneCombined/'):
         local("sbt clean package")
 
 #
@@ -45,10 +50,23 @@ def run_query_engine():
         local("spark-submit target/scala-2.10/queryengine_2.10-1.0.0-SNAPSHOT.jar --main \"%s\" >> logs/spark.log 2>&1 &" % (query), pty=False)
 
 def run_sample_query_engine():
-    print("[SAMPLE] Packaging all Query Engine into Query Engine...")
+    print("[SAMPLE] Sumbitting job to Spark for Query Engine...")
     query = prompt("Query?")
     with lcd('QueryEngine/'):
         local("spark-submit target/scala-2.10/queryengine_2.10-1.0.0-SNAPSHOT.jar --sample \"%s\" >> logs/spark.log 2>&1 &" % (query), pty=False)
+
+def run_tf_idf_query_combo):
+    print("[MAIN] Sumbitting job to Spark for TF-IDF / Query Engine Combo...")
+    query = prompt("Query?")
+    with lcd('QueryEngine/'):
+        local("spark-submit target/scala-2.10/queryengine_2.10-1.0.0-SNAPSHOT.jar --main \"%s\" >> logs/spark.log 2>&1 &" % (query), pty=False)
+
+def run_sample_tf_idf_query_combo():
+    print("[SAMPLE] Sumbitting job to Spark for TF-IDF / Query Engine Combo...")
+    query = prompt("Query?")
+    with lcd('QueryEngine/'):
+        local("spark-submit target/scala-2.10/queryengine_2.10-1.0.0-SNAPSHOT.jar --sample \"%s\" >> logs/spark.log 2>&1 &" % (query), pty=False)
+
 
 #
 # HDFS Commands
