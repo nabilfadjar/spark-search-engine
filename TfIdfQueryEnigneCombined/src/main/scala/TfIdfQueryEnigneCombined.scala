@@ -1,4 +1,6 @@
 import org.apache.spark._
+import scala.collection.immutable.HashSet
+
 /*
  * Post Class
  */
