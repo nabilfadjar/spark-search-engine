@@ -39,7 +39,7 @@ class Post(val toBeParsed: String) {
 }
 
 def readXMLFile() : Array[String] = {
-    val xmlSource = Source.fromFile("../sample_data/Posts.xml")
+    val xmlSource = Source.fromFile("../../../sample_data/Posts.xml")
     val posts = xmlSource.getLines.toArray
     xmlSource.close
     return posts
