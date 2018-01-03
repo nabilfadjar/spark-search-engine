@@ -81,8 +81,14 @@ object TfIdfQueryEnigneCombined {
         val filtered_query = query_string.toLowerCase.replaceAll("&lt;code&gt;", "").replaceAll("(&[\\S]*;)|(&lt;[\\S]*&gt;)", " ").replaceAll("[\\s](a href)|(rel)[\\s]", " ").replaceAll("(?!([\\w]*'[\\w]))([\\W_\\s\\d])+"," ").split(" ").filter(_.nonEmpty)
         val query = sc.parallelize(filtered_query)
         val query_size = sc.broadcast(query.count().toDouble)
-        val query_tf = query.map(query_term => (query_term, 1.0/query_size.value)).reduceByKey((a,b) => (a+b))
+        val query_asHashSet = sc.broadcast(new HashSet() ++ filtered_query)
 
+        /*
+         * Cosine Similarity
+         * For Cosine Similarity, we would need to calculate the TF-IDF for the given query first.
+         * For now, we are able to calculate only TF first.
+         */
+        val query_tf = query.map(query_term => (query_term, 1.0/query_size.value)).reduceByKey((a,b) => (a+b))
         val query_tf_idf = query_tf.join(idf_set).map(word => (word._1, word._2._1 * word._2._2))
 
         /*
@@ -94,10 +100,10 @@ object TfIdfQueryEnigneCombined {
         val posts_count = sc.broadcast(posts.count().toDouble)
 
         // Create Word Tuple for Word Count and filter for query
-        var wordTuple = posts.flatMap(_.getWordsFromBody().distinct).map(word => (word,1)).reduceByKey((a,b) => (a+b))
+        var wordTuple = posts.flatMap(_.getWordsFromBody().filter(word => query_asHashSet.value.contains(word)).distinct).map(word => (word,1)).reduceByKey((a,b) => (a+b))
 
         // Generate TF Set
-        var tf_set = posts.flatMap(eachPost => eachPost.getWordsFromBody().map(word => ((word, eachPost.getId), 1.0/eachPost.getNumberOfWordsInPost))).reduceByKey((a,b) => (a+b))
+        var tf_set = posts.flatMap(eachPost => eachPost.getWordsFromBody().map(word => ((query_asHashSet.value.contains(word), eachPost.getId), 1.0/eachPost.getNumberOfWordsInPost))).reduceByKey((a,b) => (a+b))
         // var wordInPostTuple = posts.flatMap(eachPost => eachPost.getWordsFromBody().map(word => (word, eachPost.getId) )).map(wordInPostKey => (wordInPostKey,1)).reduceByKey((a,b) => (a+b))
 
         var tf_set_preJoin = tf_set.map(tuple => (tuple._1._1, (tuple._1._2, tuple._2)))
@@ -109,10 +115,6 @@ object TfIdfQueryEnigneCombined {
         // Method 1: Resulting Dataset is (word, (ID,TF-IDF)), (word, (ID,TF-IDF)), (word, (ID,TF-IDF)), ..., (word, (ID,TF-IDF))
         var tf_idf_set = tf_set_preJoin.join(idf_set).map(pre_tf_idf => (pre_tf_idf._1, (pre_tf_idf._2._1._1, (pre_tf_idf._2._1._2 * pre_tf_idf._2._2))))
         // var tf_idf_set_opt_list = tf_idf_set.map(row => (row._2._2, row)).sortByKey(false).map(row => (row._2)).sortByKey()
-
-        // Method 2 (Not Being Used): Resulting Dataset is (word, CompactBuffer((ID,TF-IDF), (ID,TF-IDF), (ID,TF-IDF), ..., (ID,TF-IDF)))
-        // var tf_idf_set = tf_set_preJoin.join(idf_set).map(pre_tf_idf => (pre_tf_idf._1, (pre_tf_idf._2._1._1, (pre_tf_idf._2._1._2 * pre_tf_idf._2._2))))
-        // var tf_idf_set_opt_cb= tf_idf_set.combineByKey()
 
         // Save TF-IDF set into HDFS
         idf_set.saveAsObjectFile(index_loc + "/idf") // Save IDF Set
