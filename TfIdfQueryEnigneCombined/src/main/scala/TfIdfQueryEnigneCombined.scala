@@ -97,8 +97,9 @@ object TfIdfQueryEnigneCombined {
         var wordTuple = posts.flatMap(_.getWordsFromBody().filter(word => query_asHashSet.value.contains(word)).distinct).map(word => (word,1)).reduceByKey((a,b) => (a+b))
 
         // Generate TF Set
-        var tf_set = posts.flatMap(eachPost => eachPost.getWordsFromBody().filter(word => query_asHashSet.value.contains(word)).map(word => (word, eachPost.getId), 1.0/eachPost.getNumberOfWordsInPost))).reduceByKey((a,b) => (a+b))
-        // var wordInPostTuple = posts.flatMap(eachPost => eachPost.getWordsFromBody().map(word => (word, eachPost.getId) )).map(wordInPostKey => (wordInPostKey,1)).reduceByKey((a,b) => (a+b))
+        var tf_set = posts
+        .flatMap(eachPost => eachPost.getWordsFromBody().filter(word => query_asHashSet.value.contains(word)).map(word => (word, eachPost.getId), 1.0/eachPost.getNumberOfWordsInPost) ).reduceByKey((a,b) => (a+b))
+
 
         var tf_set_preJoin = tf_set.map(tuple => (tuple._1._1, (tuple._1._2, tuple._2)))
 
