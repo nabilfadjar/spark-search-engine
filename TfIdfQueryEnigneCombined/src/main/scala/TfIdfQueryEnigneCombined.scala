@@ -51,7 +51,7 @@ object TfIdfQueryEnigneCombined {
         val conf = new SparkConf().setAppName("Spark Search Engine: Generate TF-IDF and Query Data")
         val sc = new SparkContext(conf)
 
-        if (args.length != 1) {
+        if (args.length != 2) {
             System.err.println("Usage: TfIdfQueryEnigneCombined [--main|--sample] <query>")
             sc.stop()
         }
