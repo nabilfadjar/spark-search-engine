@@ -2,7 +2,7 @@
 # Executes the project via Fabric
 #
 
-from fabric.api import local, env, run
+from fabric.api import local, env, run, prompt
 from fabric.context_managers import lcd
 
 #
