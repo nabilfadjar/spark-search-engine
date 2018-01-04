@@ -58,13 +58,13 @@ def run_sample_query_engine():
 def run_tf_idf_query_combo():
     print("[MAIN] Sumbitting job to Spark for TF-IDF / Query Engine Combo...")
     query = prompt("Query?")
-    with lcd('QueryEngine/'):
+    with lcd('TfIdfQueryEnigneCombined/'):
         local("spark-submit target/scala-2.10/tfidfqueryenignecombined_2.10-1.0.0-SNAPSHOT.jar --main \"%s\" >> logs/spark.log 2>&1 &" % (query))
 
 def run_sample_tf_idf_query_combo():
     print("[SAMPLE] Sumbitting job to Spark for TF-IDF / Query Engine Combo...")
     query = prompt("Query?")
-    with lcd('QueryEngine/'):
+    with lcd('TfIdfQueryEnigneCombined/'):
         local("spark-submit target/scala-2.10/tfidfqueryenignecombined_2.10-1.0.0-SNAPSHOT.jar --sample \"%s\" >> logs/spark.log 2>&1 &" % (query))
 
 
