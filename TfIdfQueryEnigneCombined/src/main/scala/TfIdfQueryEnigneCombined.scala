@@ -147,7 +147,7 @@ object TfIdfQueryEnigneCombined {
         // Save Results in HDFS
         // idf_set.saveAsObjectFile(index_loc + "/idf") // Save IDF Set
         // tf_idf_set.saveAsObjectFile(index_loc + "/tf_idf") // Save TF_IDF Set
-        posts_filter_cos.saveAsTextFile(index_loc + "/search_results")
+        posts_filter_cos.saveAsTextFile(result_loc_list + "/search_results")
 
         // Stop Spark
         sc.stop()
