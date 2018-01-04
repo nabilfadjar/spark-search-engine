@@ -36,36 +36,36 @@ def package_tf_idf_query_combo():
 def run_tf_idf():
     print("[MAIN] Sumbitting job to Spark for Generating TF-IDF...")
     with lcd('GenerateTfIdf/'):
-        local("spark-submit target/scala-2.10/generatetfidf_2.10-1.0.0-SNAPSHOT.jar --main >> logs/spark.log 2>&1 &", pty=False)
+        local("spark-submit target/scala-2.10/generatetfidf_2.10-1.0.0-SNAPSHOT.jar --main >> logs/spark.log 2>&1 &")
 
 def run_sample_tf_idf():
     print("[SAMPLE] Sumbitting job to Spark for Generating TF-IDF...")
     with lcd('GenerateTfIdf/'):
-        local("spark-submit target/scala-2.10/generatetfidf_2.10-1.0.0-SNAPSHOT.jar --sample >> logs/spark.log 2>&1 &", pty=False)
+        local("spark-submit target/scala-2.10/generatetfidf_2.10-1.0.0-SNAPSHOT.jar --sample >> logs/spark.log 2>&1 &")
 
 def run_query_engine():
     print("[MAIN] Sumbitting job to Spark for Query Engine...")
     query = prompt("Query?")
     with lcd('QueryEngine/'):
-        local("spark-submit target/scala-2.10/queryengine_2.10-1.0.0-SNAPSHOT.jar --main \"%s\" >> logs/spark.log 2>&1 &" % (query), pty=False)
+        local("spark-submit target/scala-2.10/queryengine_2.10-1.0.0-SNAPSHOT.jar --main \"%s\" >> logs/spark.log 2>&1 &" % (query))
 
 def run_sample_query_engine():
     print("[SAMPLE] Sumbitting job to Spark for Query Engine...")
     query = prompt("Query?")
     with lcd('QueryEngine/'):
-        local("spark-submit target/scala-2.10/queryengine_2.10-1.0.0-SNAPSHOT.jar --sample \"%s\" >> logs/spark.log 2>&1 &" % (query), pty=False)
+        local("spark-submit target/scala-2.10/queryengine_2.10-1.0.0-SNAPSHOT.jar --sample \"%s\" >> logs/spark.log 2>&1 &" % (query))
 
 def run_tf_idf_query_combo():
     print("[MAIN] Sumbitting job to Spark for TF-IDF / Query Engine Combo...")
     query = prompt("Query?")
     with lcd('QueryEngine/'):
-        local("spark-submit target/scala-2.10/queryengine_2.10-1.0.0-SNAPSHOT.jar --main \"%s\" >> logs/spark.log 2>&1 &" % (query), pty=False)
+        local("spark-submit target/scala-2.10/queryengine_2.10-1.0.0-SNAPSHOT.jar --main \"%s\" >> logs/spark.log 2>&1 &" % (query))
 
 def run_sample_tf_idf_query_combo():
     print("[SAMPLE] Sumbitting job to Spark for TF-IDF / Query Engine Combo...")
     query = prompt("Query?")
     with lcd('QueryEngine/'):
-        local("spark-submit target/scala-2.10/queryengine_2.10-1.0.0-SNAPSHOT.jar --sample \"%s\" >> logs/spark.log 2>&1 &" % (query), pty=False)
+        local("spark-submit target/scala-2.10/queryengine_2.10-1.0.0-SNAPSHOT.jar --sample \"%s\" >> logs/spark.log 2>&1 &" % (query))
 
 
 #
