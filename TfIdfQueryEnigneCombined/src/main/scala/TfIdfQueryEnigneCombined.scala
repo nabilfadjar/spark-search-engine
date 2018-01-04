@@ -60,15 +60,21 @@ object TfIdfQueryEnigneCombined {
         val data_loc_list = Map("main" -> "/data/stackOverflow2017/Posts.xml", "sample" -> "spark-search-engine/sample_data/Posts.xml")
         var data_loc = data_loc_list("sample")
 
+        // Location of Data
+        val result_loc_list = Map("main" -> "spark-search-engine/results", "sample" -> "spark-search-engine/sample_results")
+        var result_loc = result_loc_list("sample")
+
         // sc.saveAsObjectFile(index_loc) // Save RDDs as Spark Objects (Sequence Files)
         // sc.objectFile(index_loc + "/") // Load Spark Objects (Sequence Files) as RDDs
 
         val query_string = args(1)
         if(args(0) == "--main"){
             data_loc = data_loc_list("main")
+            result_loc = result_loc_list("main")
         }
         else if(args(0) == "--sample"){
             data_loc = data_loc_list("sample")
+            result_loc = result_loc_list("sample")
         }
         else {
             System.err.println("Usage: GenerateTfIdf [--main|--sample] <query>")
@@ -136,12 +142,12 @@ object TfIdfQueryEnigneCombined {
         val posts_filter_cos = posts_filter_tf_idf_set.map(each_tf_idf_term_doc => (each_tf_idf_term_doc._2._2._1, ((each_tf_idf_term_doc._2._1 * each_tf_idf_term_doc._2._2._2), Math.pow(each_tf_idf_term_doc._2._2._2,2.0)) )).reduceByKey((a,b) => ((a._1+b._1), (a._2+b._2))).map(doc => (doc._1,(doc._2._1/(query_ecd_distance.value * Math.sqrt(doc._2._2)))))
 
         // val posts_filter_cos_sort = posts_filter_cos.map(row => (row._2, row)).sortByKey(false).map(row => (row._2))
-        posts_filter_cos.foreach(println)
+        // posts_filter_cos.foreach(println)
 
-        // Save TF-IDF set into HDFS
+        // Save Results in HDFS
         // idf_set.saveAsObjectFile(index_loc + "/idf") // Save IDF Set
         // tf_idf_set.saveAsObjectFile(index_loc + "/tf_idf") // Save TF_IDF Set
-        .saveAsTextFile()
+        posts_filter_cos.saveAsTextFile()
 
         // Stop Spark
         sc.stop()
