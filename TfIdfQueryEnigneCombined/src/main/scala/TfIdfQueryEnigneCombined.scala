@@ -1,5 +1,6 @@
 import org.apache.spark._
 import scala.collection.immutable.HashSet
+import org.apache.spark.storage.StorageLevel._
 
 /*
  * Post Class
@@ -98,7 +99,7 @@ object TfIdfQueryEnigneCombined {
         // Parse XML posts as Post Objects
         var posts = sc.textFile(data_loc).map(row => new Post(row)).filter(_.getMap() != null)
         val posts_count = sc.broadcast(posts.count().toDouble)
-        var posts_query_filtered = posts.filter(eachPost => !(eachPost.getWordsFromBody().filter(word => query_asHashSet.value.contains(word)).isEmpty) ).persist(StorageLevel.MEMORY_AND_DISK)
+        var posts_query_filtered = posts.filter(eachPost => !(eachPost.getWordsFromBody().filter(word => query_asHashSet.value.contains(word)).isEmpty) ).persist(MEMORY_AND_DISK)
 
         // Create Word Tuple for Word Count and filter for query
         var wordTuple = posts_query_filtered.flatMap(_.getWordsFromBody().filter(word => query_asHashSet.value.contains(word)).distinct).map(word => (word,1)).reduceByKey((a,b) => (a+b))
@@ -109,7 +110,7 @@ object TfIdfQueryEnigneCombined {
         var tf_set_preJoin = tf_set.map(tuple => (tuple._1._1, (tuple._1._2, tuple._2)))
 
         // Generate IDF Set
-        var idf_set = wordTuple.map(eachWordTuple => (eachWordTuple._1,((Math.log(posts_count.value) - Math.log(eachWordTuple._2))/Math.log(Math.E))+1)).persist(StorageLevel.MEMORY_AND_DISK)
+        var idf_set = wordTuple.map(eachWordTuple => (eachWordTuple._1,((Math.log(posts_count.value) - Math.log(eachWordTuple._2))/Math.log(Math.E))+1)).persist(MEMORY_AND_DISK)
 
         // Generate TF-IDF Set
         // Method 1: Resulting Dataset is (word, (ID,TF-IDF)), (word, (ID,TF-IDF)), (word, (ID,TF-IDF)), ..., (word, (ID,TF-IDF))
