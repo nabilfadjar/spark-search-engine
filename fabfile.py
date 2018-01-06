@@ -82,4 +82,4 @@ def hdfs_check_quota():
 
 def hdfs_clear_query_results():
     print("Clearing processed results...")
-    local("hdfs fs -rm -R -skipTrash spark-search-engine/results/search_results")
+    local("hadoop fs -rm -R -skipTrash spark-search-engine/results/search_results")
