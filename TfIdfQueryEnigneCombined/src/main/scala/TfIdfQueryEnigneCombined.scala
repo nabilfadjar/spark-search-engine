@@ -98,7 +98,7 @@ object TfIdfQueryEnigneCombined {
         // Parse XML posts as Post Objects
         var posts = sc.textFile(data_loc).map(row => new Post(row)).filter(_.getMap() != null)
         val posts_count = sc.broadcast(posts.count().toDouble)
-        var posts_query_filtered = posts.filter(eachPost => !(eachPost.getWordsFromBody().filter(word => query_asHashSet.value.contains(word)).isEmpty) ).collect()
+        var posts_query_filtered = posts.filter(eachPost => !(eachPost.getWordsFromBody().filter(word => query_asHashSet.value.contains(word)).isEmpty) ).persist(StorageLevel.MEMORY_AND_DISK)
 
         // Create Word Tuple for Word Count and filter for query
         var wordTuple = posts_query_filtered.flatMap(_.getWordsFromBody().filter(word => query_asHashSet.value.contains(word)).distinct).map(word => (word,1)).reduceByKey((a,b) => (a+b))
