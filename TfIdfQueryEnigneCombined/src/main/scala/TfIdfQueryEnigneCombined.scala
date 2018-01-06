@@ -98,12 +98,13 @@ object TfIdfQueryEnigneCombined {
         // Parse XML posts as Post Objects
         var posts = sc.textFile(data_loc).map(row => new Post(row)).filter(_.getMap() != null)
         val posts_count = sc.broadcast(posts.count().toDouble)
+        var posts_query_filtered = posts.filter(eachPost => !(eachPost.getWordsFromBody().filter(word => query_asHashSet.value.contains(word)).isEmpty()))
 
         // Create Word Tuple for Word Count and filter for query
-        var wordTuple = posts.flatMap(_.getWordsFromBody().filter(word => query_asHashSet.value.contains(word)).distinct).map(word => (word,1)).reduceByKey((a,b) => (a+b))
+        var wordTuple = posts_query_filtered.flatMap(_.getWordsFromBody().filter(word => query_asHashSet.value.contains(word)).distinct).map(word => (word,1)).reduceByKey((a,b) => (a+b))
 
         // Generate TF Set
-        var tf_set = posts.flatMap(eachPost => eachPost.getWordsFromBody().filter(word => query_asHashSet.value.contains(word)).map(word => ((word, eachPost.getId), 1.0/eachPost.getNumberOfWordsInPost))).reduceByKey((a,b) => (a+b))
+        var tf_set = posts_query_filtered.flatMap(eachPost => eachPost.getWordsFromBody().filter(word => query_asHashSet.value.contains(word)).map(word => ((word, eachPost.getId), 1.0/eachPost.getNumberOfWordsInPost))).reduceByKey((a,b) => (a+b))
 
         var tf_set_preJoin = tf_set.map(tuple => (tuple._1._1, (tuple._1._2, tuple._2)))
 
