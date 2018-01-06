@@ -73,9 +73,13 @@ def run_sample_tf_idf_query_combo():
 #
 
 def hdfs_ls_query_engine():
-    print("Listing files in HDFS in spark-search-eninge...")
+    print("Listing files in HDFS in spark-search-engine...")
     local("hadoop fs -ls /user/mnf30")
 
 def hdfs_check_quota():
     print("HDFS: Quota")
     local("hdfs dfs -count -q -h /user/mnf30")
+
+def hdfs_clear_query_results():
+    print("Clearing processed results...")
+    local("hdfs fs -rm -R -skipTrash spark-search-engine/results/search_results")
