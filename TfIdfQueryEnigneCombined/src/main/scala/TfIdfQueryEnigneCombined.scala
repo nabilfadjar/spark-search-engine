@@ -117,36 +117,43 @@ object TfIdfQueryEnigneCombined {
         // Method 1: Resulting Dataset is (word, (ID,TF-IDF)), (word, (ID,TF-IDF)), (word, (ID,TF-IDF)), ..., (word, (ID,TF-IDF))
         var tf_idf_set = tf_set_preJoin.join(idf_set).map(pre_tf_idf => (pre_tf_idf._1, (pre_tf_idf._2._1._1, (pre_tf_idf._2._1._2 * pre_tf_idf._2._2))))
 
-        /*
-         * Cosine Similarity
-         * Part 1: Calculating TF-IDF for Query Set
-         * For Cosine Similarity, we would need to calculate the TF-IDF for the given query first.
-         * For now, we are able to calculate only TF first.
-         */
-        // Get TF-IDF for Query
-        val query_tf = query.map(query_term => (query_term, 1.0/query_size.value)).reduceByKey((a,b) => (a+b))
-        val query_tf_idf = query_tf.join(idf_set).map(word => (word._1, word._2._1 * word._2._2))
+        if(query_size.value == 1){
+            val tf_idf_set_sort = posts_filter_cos.map(row => (row._2, row)).sortByKey(false).map(row => (row._2)).take(10)
 
-        // Euclidean distance for Query
-        val query_ecd_distance = sc.broadcast(Math.sqrt(query_tf_idf.map(eachQuery => Math.pow(eachQuery._2, 2.0)).reduce(_ + _)))
+            // Save Results in HDFS
+            tf_idf_set_sort.saveAsTextFile(result_loc + "/search_results")
+        }
+        else {
+            /*
+             * Cosine Similarity
+             * Part 1: Calculating TF-IDF for Query Set
+             * For Cosine Similarity, we would need to calculate the TF-IDF for the given query first.
+             * For now, we are able to calculate only TF first.
+             */
+            // Get TF-IDF for Query
+            val query_tf = query.map(query_term => (query_term, 1.0/query_size.value)).reduceByKey((a,b) => (a+b))
+            val query_tf_idf = query_tf.join(idf_set).map(word => (word._1, word._2._1 * word._2._2))
 
-        //Get Post TF-IDF
-        //val posts_idf = query_idf
-        val posts_filter_tf_idf_set = query_tf_idf.join(tf_idf_set)
+            // Euclidean distance for Query
+            val query_ecd_distance = sc.broadcast(Math.sqrt(query_tf_idf.map(eachQuery => Math.pow(eachQuery._2, 2.0)).reduce(_ + _)))
 
-        // Sample
-        // (code,(0.8278593324990533,(199,0.007701017046502822)))
-        // (java,(1.6069316415223283,(89,0.08240675084729888)))
-        // Dot Product = (query_tf_idf_1 * post_tf_idf) + (query_tf_idf_2 * post_tf_idf) ... + (query_tf_idf_n * post_tf_idf)
-        // Euclidean distance = Math.sqrt(Math.pow(query_tf_idf_1,2) + Math.pow(query_tf_idf_2,2) ... + + Math.pow(query_tf_idf_n,2))
-        // Cosine Similarity = Dot Product / Cosine Similarity
-        // Formula = (query_tf_idf * post_tf_idf) / ( Math.sqrt(pow(query_tf_idf,2.0)) * Math.sqrt(pow(post_tf_idf,2.0)) )
-        val posts_filter_cos = posts_filter_tf_idf_set.map(each_tf_idf_term_doc => (each_tf_idf_term_doc._2._2._1, ((each_tf_idf_term_doc._2._1 * each_tf_idf_term_doc._2._2._2), Math.pow(each_tf_idf_term_doc._2._2._2,2.0)) )).reduceByKey((a,b) => ((a._1+b._1), (a._2+b._2))).map(doc => (doc._1,(doc._2._1/(query_ecd_distance.value * Math.sqrt(doc._2._2)))))
+            //Get Post TF-IDF
+            //val posts_idf = query_idf
+            val posts_filter_tf_idf_set = query_tf_idf.join(tf_idf_set)
 
-        // val posts_filter_cos_sort = posts_filter_cos.map(row => (row._2, row)).sortByKey(false).map(row => (row._2))
+            // Sample
+            // (code,(0.8278593324990533,(199,0.007701017046502822)))
+            // (java,(1.6069316415223283,(89,0.08240675084729888)))
+            // Dot Product = (query_tf_idf_1 * post_tf_idf) + (query_tf_idf_2 * post_tf_idf) ... + (query_tf_idf_n * post_tf_idf)
+            // Euclidean distance = Math.sqrt(Math.pow(query_tf_idf_1,2) + Math.pow(query_tf_idf_2,2) ... + + Math.pow(query_tf_idf_n,2))
+            // Cosine Similarity = Dot Product / Cosine Similarity
+            // Formula = (query_tf_idf * post_tf_idf) / ( Math.sqrt(pow(query_tf_idf,2.0)) * Math.sqrt(pow(post_tf_idf,2.0)) )
+            val posts_filter_cos = posts_filter_tf_idf_set.map(each_tf_idf_term_doc => (each_tf_idf_term_doc._2._2._1, ((each_tf_idf_term_doc._2._1 * each_tf_idf_term_doc._2._2._2), Math.pow(each_tf_idf_term_doc._2._2._2,2.0)) )).reduceByKey((a,b) => ((a._1+b._1), (a._2+b._2))).map(doc => (doc._1,(doc._2._1/(query_ecd_distance.value * Math.sqrt(doc._2._2)))))
+            val posts_filter_cos_sort = posts_filter_cos.map(row => (row._2, row)).sortByKey(false).map(row => (row._2)).take(10)
 
-        // Save Results in HDFS
-        posts_filter_cos.saveAsTextFile(result_loc + "/search_results")
+            // Save Results in HDFS
+            posts_filter_cos_sort.saveAsTextFile(result_loc + "/search_results")
+        }
 
         // Stop Spark
         sc.stop()
