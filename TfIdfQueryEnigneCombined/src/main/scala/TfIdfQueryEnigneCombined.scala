@@ -106,7 +106,11 @@ object TfIdfQueryEnigneCombined {
         // Create Word Tuple for Word Count and filter for query
         var wordTuple = posts_query_filtered.flatMap(_.getWordsFromBody().filter(word => query_asHashSet.value.contains(word)).distinct).map(word => (word,1)).reduceByKey((a,b) => (a+b))
 
-        // Generate TF Set
+        /*
+         * Generate TF Set
+         * Creates a (Word, ID) tuple and assigns it a weight shared by all terms in the same post (1.0/eachpost…), all stored in an RDD.
+         * (Word, ID) tuple is filtered to only words given by the query.
+         */
         var tf_set = posts_query_filtered.flatMap(eachPost => eachPost.getWordsFromBody().filter(word => query_asHashSet.value.contains(word)).map(word => ((word, eachPost.getId), 1.0/eachPost.getNumberOfWordsInPost))).reduceByKey((a,b) => (a+b))
         var tf_set_preJoin = tf_set.map(tuple => (tuple._1._1, (tuple._1._2, tuple._2)))
 
@@ -120,7 +124,7 @@ object TfIdfQueryEnigneCombined {
         if(query_size.value == 1){
             val tf_idf_set_sort = posts_filter_cos.map(row => (row._2, row)).sortByKey(false).map(row => (row._2)).take(10)
 
-            // Save Results in HDFS
+            // Save Results in HDFStake
             tf_idf_set_sort.saveAsTextFile(result_loc + "/search_results")
         }
         else {
