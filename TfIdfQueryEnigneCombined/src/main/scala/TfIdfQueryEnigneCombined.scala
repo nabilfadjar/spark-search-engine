@@ -122,7 +122,7 @@ object TfIdfQueryEnigneCombined {
         var tf_idf_set = tf_set_preJoin.join(idf_set).map(pre_tf_idf => (pre_tf_idf._1, (pre_tf_idf._2._1._1, (pre_tf_idf._2._1._2 * pre_tf_idf._2._2))))
 
         if(query_size.value == 1){
-            val tf_idf_set_sort = posts_filter_cos.map(row => (row._2, row)).sortByKey(false).map(row => (row._2)).take(10)
+            val tf_idf_set_sort = tf_idf_set.map(row => (row._2, row)).sortByKey(false).map(row => (row._2)).take(10)
 
             // Save Results in HDFStake
             sc.parallelize(tf_idf_set_sort).saveAsTextFile(result_loc + "/search_results")
