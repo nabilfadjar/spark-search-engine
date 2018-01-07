@@ -125,7 +125,7 @@ object TfIdfQueryEnigneCombined {
             val tf_idf_set_sort = posts_filter_cos.map(row => (row._2, row)).sortByKey(false).map(row => (row._2)).take(10)
 
             // Save Results in HDFStake
-            tf_idf_set_sort.saveAsTextFile(result_loc + "/search_results")
+            sc.parallelize(tf_idf_set_sort).saveAsTextFile(result_loc + "/search_results")
         }
         else {
             /*
@@ -156,7 +156,7 @@ object TfIdfQueryEnigneCombined {
             val posts_filter_cos_sort = posts_filter_cos.map(row => (row._2, row)).sortByKey(false).map(row => (row._2)).take(10)
 
             // Save Results in HDFS
-            posts_filter_cos_sort.saveAsTextFile(result_loc + "/search_results")
+            sc.parallelize(posts_filter_cos_sort).saveAsTextFile(result_loc + "/search_results")
         }
 
         // Stop Spark
