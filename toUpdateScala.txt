@@ -1,0 +1,19 @@
+=== Original ===
+var posts = readXMLFile.map(row => new Post(row)).filter(post => if(post.getMap() != null) { counter+= 1; true; } else false)
+
+
+=== How to use Accumulator ===
+scala> val accum = sc.accumulator(0)
+accum: spark.Accumulator[Int] = 0
+
+scala> sc.parallelize(Array(1, 2, 3, 4)).foreach(x => accum += x)
+...
+10/09/29 18:41:08 INFO SparkContext: Tasks finished in 0.317106 s
+
+scala> accum.value
+res2: Int = 10
+
+
+=== My Implementation ===
+var posts_count = = sc.accumulator(0)
+var posts = sc.textFile(data_loc).map(row => new Post(row)).filter(post => if(post.getMap() != null) { posts_count+= 1; true; } else false)
