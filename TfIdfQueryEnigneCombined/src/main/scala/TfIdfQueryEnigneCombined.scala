@@ -48,10 +48,15 @@ class Post(val toBeParsed: String) {
  */
 object TfIdfQueryEnigneCombined {
     def main(args: Array[String]) {
-        // Init App
+        /*
+         * Initialise Spark Job
+         */
+
+         // Init SparkContext
         val conf = new SparkConf().setAppName("Spark Search Engine: Generate TF-IDF and Query Data")
         val sc = new SparkContext(conf)
 
+        // Parse given arguements: Length Check
         if (args.length != 2) {
             System.err.println("Usage: TfIdfQueryEnigneCombined [--main|--sample] <query>")
             sc.stop()
@@ -61,13 +66,11 @@ object TfIdfQueryEnigneCombined {
         val data_loc_list = Map("main" -> "/data/stackOverflow2017/Posts.xml", "sample" -> "spark-search-engine/sample_data/Posts.xml")
         var data_loc = data_loc_list("sample")
 
-        // Location of Data
+        // Location of Reults
         val result_loc_list = Map("main" -> "spark-search-engine/results", "sample" -> "spark-search-engine/sample_results")
         var result_loc = result_loc_list("sample")
 
-        // sc.saveAsObjectFile(index_loc) // Save RDDs as Spark Objects (Sequence Files)
-        // sc.objectFile(index_loc + "/") // Load Spark Objects (Sequence Files) as RDDs
-
+        // Parse given arguements: Arguement Check
         val query_string = args(1)
         if(args(0) == "--main"){
             data_loc = data_loc_list("main")
@@ -82,11 +85,10 @@ object TfIdfQueryEnigneCombined {
         }
 
         /*
-         * Cosine Similarity
-         * For Cosine Similarity, we would need to calculate the TF-IDF for the given query first.
-         * For now, we are able to calculate only TF first.
+         * Query Parsing and Cleansing
+         * For this stage, we would parse the entire dataset and would filter out unnecessary data.
          */
-        //Get TF-IDF for Query
+        // Parse given query
         val filtered_query = query_string.toLowerCase.replaceAll("&lt;code&gt;", "").replaceAll("(&[\\S]*;)|(&lt;[\\S]*&gt;)", " ").replaceAll("[\\s](a href)|(rel)[\\s]", " ").replaceAll("(?!([\\w]*'[\\w]))([\\W_\\s\\d])+"," ").split(" ").filter(_.nonEmpty)
         val query = sc.parallelize(filtered_query)
         val query_size = sc.broadcast(query.count().toDouble)
@@ -106,7 +108,6 @@ object TfIdfQueryEnigneCombined {
 
         // Generate TF Set
         var tf_set = posts_query_filtered.flatMap(eachPost => eachPost.getWordsFromBody().filter(word => query_asHashSet.value.contains(word)).map(word => ((word, eachPost.getId), 1.0/eachPost.getNumberOfWordsInPost))).reduceByKey((a,b) => (a+b))
-
         var tf_set_preJoin = tf_set.map(tuple => (tuple._1._1, (tuple._1._2, tuple._2)))
 
         // Generate IDF Set
@@ -115,13 +116,14 @@ object TfIdfQueryEnigneCombined {
         // Generate TF-IDF Set
         // Method 1: Resulting Dataset is (word, (ID,TF-IDF)), (word, (ID,TF-IDF)), (word, (ID,TF-IDF)), ..., (word, (ID,TF-IDF))
         var tf_idf_set = tf_set_preJoin.join(idf_set).map(pre_tf_idf => (pre_tf_idf._1, (pre_tf_idf._2._1._1, (pre_tf_idf._2._1._2 * pre_tf_idf._2._2))))
-        // var tf_idf_set_opt_list = tf_idf_set.map(row => (row._2._2, row)).sortByKey(false).map(row => (row._2)).sortByKey()
 
         /*
-        * Cosine Similarity
-        * For Cosine Similarity, we would need to calculate the TF-IDF for the given query first.
-        * For now, we are able to calculate only TF first.
-        */
+         * Cosine Similarity
+         * Part 1: Calculating TF-IDF for Query Set
+         * For Cosine Similarity, we would need to calculate the TF-IDF for the given query first.
+         * For now, we are able to calculate only TF first.
+         */
+        // Get TF-IDF for Query
         val query_tf = query.map(query_term => (query_term, 1.0/query_size.value)).reduceByKey((a,b) => (a+b))
         val query_tf_idf = query_tf.join(idf_set).map(word => (word._1, word._2._1 * word._2._2))
 
@@ -142,11 +144,8 @@ object TfIdfQueryEnigneCombined {
         val posts_filter_cos = posts_filter_tf_idf_set.map(each_tf_idf_term_doc => (each_tf_idf_term_doc._2._2._1, ((each_tf_idf_term_doc._2._1 * each_tf_idf_term_doc._2._2._2), Math.pow(each_tf_idf_term_doc._2._2._2,2.0)) )).reduceByKey((a,b) => ((a._1+b._1), (a._2+b._2))).map(doc => (doc._1,(doc._2._1/(query_ecd_distance.value * Math.sqrt(doc._2._2)))))
 
         // val posts_filter_cos_sort = posts_filter_cos.map(row => (row._2, row)).sortByKey(false).map(row => (row._2))
-        // posts_filter_cos.foreach(println)
 
         // Save Results in HDFS
-        // idf_set.saveAsObjectFile(index_loc + "/idf") // Save IDF Set
-        // tf_idf_set.saveAsObjectFile(index_loc + "/tf_idf") // Save TF_IDF Set
         posts_filter_cos.saveAsTextFile(result_loc + "/search_results")
 
         // Stop Spark
