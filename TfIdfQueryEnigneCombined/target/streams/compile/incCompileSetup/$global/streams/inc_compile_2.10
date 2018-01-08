@@ -1,0 +1,414 @@
+format version: 5
+output mode:
+1 items
+0 -> single
+output directories:
+1 items
+output dir -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes
+compile options:
+0 items
+javac options:
+0 items
+compiler version:
+1 items
+0 -> 2.10.5
+compile order:
+1 items
+0 -> Mixed
+name hashing:
+1 items
+0 -> true
+products:
+43 items
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/Post$$anonfun$extractWordsFromBody$1.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/Post$$anonfun$getBody$1.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/Post$$anonfun$getId$1.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/Post$$anonfun$transformIntoMap$1.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/Post$$anonfun$transformIntoMap$2.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/Post$$anonfun$transformIntoMap$3.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/Post.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$1.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$10.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$11$$anonfun$apply$3.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$11$$anonfun$apply$4.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$11.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$12.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$13.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$14.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$15.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$16.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$17.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$18.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$19.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$2.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$20.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$21.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$22.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$23.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$24.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$25.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$26.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$27.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$28.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$29.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$3.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$30.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$4.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$5.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$6.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$7.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$8$$anonfun$apply$1.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$8.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$9$$anonfun$apply$2.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$9.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$.class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined.class
+binary dependencies:
+3 items
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/.ivy2/cache/org.apache.spark/spark-core_2.10/jars/spark-core_2.10-1.6.0.jar
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /homes/mnf30/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.10.5.jar
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /usr/java/jdk1.7.0_71/jre/lib/rt.jar
+direct source dependencies:
+0 items
+direct external dependencies:
+0 items
+public inherited source dependencies:
+0 items
+public inherited external dependencies:
+0 items
+member reference internal dependencies:
+0 items
+member reference external dependencies:
+0 items
+inheritance internal dependencies:
+0 items
+inheritance external dependencies:
+0 items
+class names:
+43 items
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Post
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Post$$anonfun$extractWordsFromBody$1
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Post$$anonfun$getBody$1
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Post$$anonfun$getId$1
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Post$$anonfun$transformIntoMap$1
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Post$$anonfun$transformIntoMap$2
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Post$$anonfun$transformIntoMap$3
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$1
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$10
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$11
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$11$$anonfun$apply$3
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$11$$anonfun$apply$4
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$12
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$13
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$14
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$15
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$16
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$17
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$18
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$19
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$2
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$20
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$21
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$22
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$23
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$24
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$25
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$26
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$27
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$28
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$29
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$3
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$30
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$4
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$5
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$6
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$7
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$8
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$8$$anonfun$apply$1
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$9
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined$$anonfun$9$$anonfun$apply$2
+used names:
+210 items
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> !=
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> &&
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> *
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> +
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> ++
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> -
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> ->
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> /
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> <:<
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> <byname>
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> <init>
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> <repeated>
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> ==
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> A
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> A1
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> AbstractPartialFunction
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Any
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> AnyRef
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Array
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> ArrayOps
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> ArrowAssoc
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> B
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> B1
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Boolean
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Broadcast
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> CanBuildFrom
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> CharSequence
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Class
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> ClassTag
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Double
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Function1
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Function2
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> GenTraversableOnce
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> HashSet
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> IndexedSeq
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Int
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Iterator
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> K
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Long
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> MEMORY_AND_DISK
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Map
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Math
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Nothing
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Object
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Option
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> OrderedRDDFunctions
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Ordering
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> PairRDDFunctions
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> PartialFunction
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Post
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Predef
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> PrintStream
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> RDD
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Seq
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Set
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> SparkConf
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> SparkContext
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> StorageLevel
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> String
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> StringOps
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> System
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> T
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> T0
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> T1
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> T2
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TfIdfQueryEnigneCombined
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> That
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> TraversableOnce
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Tuple2
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> U
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> Unit
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> V
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> W
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> WrappedArray
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> _$4
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> _$6
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> _1
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> _2
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> a
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> any2ArrowAssoc
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> apache
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> apply
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> args
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> asInstanceOf
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> augmentString
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> b
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> broadcast
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> canBuildFrom
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> collect
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> collection
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> conf
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> conforms
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> contains
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> count
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> data_loc
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> data_loc_list
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> distinct
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> doc
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> eachPost
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> eachQuery
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> eachWordTuple
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> each_tf_idf_term_doc
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> endsWith
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> err
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> extractWordsFromBody
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> filter
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> filterKeys
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> filtered_query
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> flatMap
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> get
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> getBody
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> getId
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> getMap
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> getNumberOfWordsInPost
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> getOrElse
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> getWordsFromBody
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> grouped
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> idf_set
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> immutable
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> intArrayOps
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> isEmpty
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> isHeaderOrFooter
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> java
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> join
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> k
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> lang
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> length
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> lengthCompare
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> log
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> map
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> materializeClassTag
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> math
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> nonEmpty
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> org
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> package
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> parallelize
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> persist
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> post
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> postID_asHashSet
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> postMap
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> posts
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> posts_count
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> posts_filter_cos
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> posts_filter_cos_sort
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> posts_filter_cos_sort_xml
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> posts_filter_tf_idf_set
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> posts_query_filtered
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> pow
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> pre_tf_idf
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> println
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> qual$1
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> qual$2
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> query
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> query_asHashSet
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> query_ecd_distance
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> query_size
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> query_string
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> query_term
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> query_tf
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> query_tf_idf
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> rdd
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> rddToOrderedRDDFunctions
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> rddToPairRDDFunctions
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> reduce
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> reduceByKey
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> refArrayOps
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> replaceAll
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> result_loc
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> result_loc_list
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> row
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> saveAsTextFile
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> sc
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> scala
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> setAppName
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> sortByKey
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> spark
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> split
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> sqrt
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> stop
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> storage
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> take
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> textFile
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> tf_idf_set
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> tf_idf_set_sort
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> tf_idf_set_sort_xml
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> tf_set
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> tf_set_preJoin
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> toBeParsed
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> toBeParsed_=
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> toDouble
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> toInt
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> toLowerCase
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> toMap
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> transformIntoMap
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> trim
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> tuple
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> unapplySeq
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> unary_!
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> unchecked
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> v
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> value
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> word
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> wordTuple
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> wordsInBody
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> wrapRefArray
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> x$10
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> x$11
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> x$12
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> x$9
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> ||
+product stamps:
+43 items
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/Post$$anonfun$extractWordsFromBody$1.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/Post$$anonfun$getBody$1.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/Post$$anonfun$getId$1.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/Post$$anonfun$transformIntoMap$1.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/Post$$anonfun$transformIntoMap$2.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/Post$$anonfun$transformIntoMap$3.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/Post.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$1.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$10.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$11$$anonfun$apply$3.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$11$$anonfun$apply$4.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$11.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$12.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$13.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$14.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$15.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$16.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$17.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$18.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$19.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$2.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$20.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$21.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$22.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$23.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$24.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$25.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$26.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$27.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$28.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$29.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$3.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$30.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$4.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$5.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$6.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$7.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$8$$anonfun$apply$1.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$8.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$9$$anonfun$apply$2.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$$anonfun$9.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined$.class -> lastModified(1515394905000)
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/target/scala-2.10/classes/TfIdfQueryEnigneCombined.class -> lastModified(1515394905000)
+source stamps:
+1 items
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> hash(e350c466dec4bb38f5e78d6bf508cea06ec395c3)
+binary stamps:
+3 items
+/homes/mnf30/.ivy2/cache/org.apache.spark/spark-core_2.10/jars/spark-core_2.10-1.6.0.jar -> lastModified(1450755479000)
+/homes/mnf30/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.10.5.jar -> lastModified(1425002069000)
+/usr/java/jdk1.7.0_71/jre/lib/rt.jar -> lastModified(1506854887000)
+class names:
+3 items
+/homes/mnf30/.ivy2/cache/org.apache.spark/spark-core_2.10/jars/spark-core_2.10-1.6.0.jar -> org.apache.spark.storage.StorageLevel
+/homes/mnf30/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.10.5.jar -> scala.Serializable
+/usr/java/jdk1.7.0_71/jre/lib/rt.jar -> java.lang.Object
+internal apis:
+1 items
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlSjH5SdlLSkQCAAdJAAdhcGlIYXNoWgAIaGFzTWFjcm9aABBoYXNQYWNrYWdlT2JqZWN0TAAYX2ludGVybmFsT25seV9uYW1lSGFzaGVzdAAkTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoZXM7TAADYXBpdAAVTHhzYnRpL2FwaS9Tb3VyY2VBUEk7TAALY29tcGlsYXRpb250ABdMeHNidGkvYXBpL0NvbXBpbGF0aW9uO1sABGhhc2h0AAJbQnhwfVWnwAAAc3IAInhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoZXNU2r6Z+tTsTAIAAlsAD2ltcGxpY2l0TWVtYmVyc3QAI1tMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2g7WwAOcmVndWxhck1lbWJlcnNxAH4AB3hwdXIAI1tMeHNidGkuYXBpLl9pbnRlcm5hbE9ubHlfTmFtZUhhc2g7SVqAtt2Wi/QCAAB4cAAAAAB1cQB+AAkAAAAdc3IAIHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoWw71InY4V88CAAJJAARoYXNoTAAEbmFtZXQAEkxqYXZhL2xhbmcvU3RyaW5nO3hwYamnAnQABm5vdGlmeXNxAH4ADCdHZOh0AAR3YWl0c3EAfgAMNGflj3QADSRhc0luc3RhbmNlT2ZzcQB+AAyAq8EHdAAGZXF1YWxzc3EAfgAMOE0ne3QADGFzSW5zdGFuY2VPZnNxAH4ADMaE00p0AAxzeW5jaHJvbml6ZWRzcQB+AAySKQEjdAANJGlzSW5zdGFuY2VPZnNxAH4ADFTOV+Z0AARtYWluc3EAfgAMAtZpz3QABmdldE1hcHNxAH4ADBH9ASB0AAlub3RpZnlBbGxzcQB+AAz3jDlqdAAQZ2V0V29yZHNGcm9tQm9keXNxAH4ADNj4yYN0AAxpc0luc3RhbmNlT2ZzcQB+AAzIjXhrdAAWZ2V0TnVtYmVyT2ZXb3Jkc0luUG9zdHNxAH4ADKn+37h0AAY8aW5pdD5zcQB+AAyjOZpcdAAKdG9CZVBhcnNlZHNxAH4ADOh/mKJ0AAI9PXNxAH4ADK4sUkV0AARQb3N0c3EAfgAMngnVrnQABWNsb25lc3EAfgAMbdhM+3QAGFRmSWRmUXVlcnlFbmlnbmVDb21iaW5lZHNxAH4ADH3YQnx0AAh0b1N0cmluZ3NxAH4ADCd6dKx0AAIhPXNxAH4ADPSGhZZ0AAhnZXRDbGFzc3NxAH4ADGceZx90AAdnZXRCb2R5c3EAfgAM0pY81XQAAm5lc3EAfgAMhtf2Q3QABWdldElkc3EAfgAM+bABmHQAAmVxc3EAfgAMVwI/z3QAAiMjc3EAfgAMQWh95HQACGZpbmFsaXplc3EAfgAMbXxhkHQACGhhc2hDb2Rlc3IAE3hzYnRpLmFwaS5Tb3VyY2VBUEm5Xqf5KSM4pAIAAlsAC2RlZmluaXRpb25zdAAXW0x4c2J0aS9hcGkvRGVmaW5pdGlvbjtbAAhwYWNrYWdlc3QAFFtMeHNidGkvYXBpL1BhY2thZ2U7eHB1cgAXW0x4c2J0aS5hcGkuRGVmaW5pdGlvbjuIyVzntONeDgIAAHhwAAAAAnNyABN4c2J0aS5hcGkuQ2xhc3NMaWtlgzQcod+wl2wCAARMAA5kZWZpbml0aW9uVHlwZXQAGkx4c2J0aS9hcGkvRGVmaW5pdGlvblR5cGU7WwAQc2F2ZWRBbm5vdGF0aW9uc3QAE1tMamF2YS9sYW5nL1N0cmluZztMAAhzZWxmVHlwZXQAEEx4c2J0aS9hcGkvTGF6eTtMAAlzdHJ1Y3R1cmVxAH4AUXhyACF4c2J0aS5hcGkuUGFyYW1ldGVyaXplZERlZmluaXRpb275EW6x1VA84gIAAVsADnR5cGVQYXJhbWV0ZXJzdAAaW0x4c2J0aS9hcGkvVHlwZVBhcmFtZXRlcjt4cgAUeHNidGkuYXBpLkRlZmluaXRpb26HKhvocULjRgIABEwABmFjY2Vzc3QAEkx4c2J0aS9hcGkvQWNjZXNzO1sAC2Fubm90YXRpb25zdAAXW0x4c2J0aS9hcGkvQW5ub3RhdGlvbjtMAAltb2RpZmllcnN0ABVMeHNidGkvYXBpL01vZGlmaWVycztMAARuYW1lcQB+AA14cHNyABB4c2J0aS5hcGkuUHVibGljulg9rmwtYEICAAB4cgAQeHNidGkuYXBpLkFjY2Vzc91imvgdYzFIAgAAeHB1cgAXW0x4c2J0aS5hcGkuQW5ub3RhdGlvbjvrl+sZEPaNSAIAAHhwAAAAAHNyABN4c2J0aS5hcGkuTW9kaWZpZXJzl+dh3BMme7MCAAFCAAVmbGFnc3hwAHEAfgAvdXIAGltMeHNidGkuYXBpLlR5cGVQYXJhbWV0ZXI72W0mDyid8rYCAAB4cAAAAAB+cgAYeHNidGkuYXBpLkRlZmluaXRpb25UeXBlAAAAAAAAAAASAAB4cgAOamF2YS5sYW5nLkVudW0AAAAAAAAAABIAAHhwdAAIQ2xhc3NEZWZ1cgATW0xqYXZhLmxhbmcuU3RyaW5nO63SVufpHXtHAgAAeHAAAAAAc3IAIXhzYnRpLmFwaS5BYnN0cmFjdExhenkkU3RyaWN0TGF6eQ1mHGspFiq4AgABTAAFdmFsdWV0ABJMamF2YS9sYW5nL09iamVjdDt4cHNyABN4c2J0aS5hcGkuRW1wdHlUeXBlvP2eRkk7iSQCAAB4cgAUeHNidGkuYXBpLlNpbXBsZVR5cGVyeGKIISO/QAIAAHhyAA54c2J0aS5hcGkuVHlwZT9q2SEWSarKAgAAeHBzcQB+AGhzcgATeHNidGkuYXBpLlN0cnVjdHVyZamq+YCTb9gAAgADTAAIZGVjbGFyZWRxAH4AUUwACWluaGVyaXRlZHEAfgBRTAAHcGFyZW50c3EAfgBReHEAfgBtc3EAfgBodXEAfgBMAAAAAHNxAH4AaHVxAH4ATAAAAABzcQB+AGh1cgARW0x4c2J0aS5hcGkuVHlwZTt0/6Vae/npQQIAAHhwAAAAAnNyABR4c2J0aS5hcGkuUHJvamVjdGlvbvPSjVTpRaQtAgACTAACaWRxAH4ADUwABnByZWZpeHQAFkx4c2J0aS9hcGkvU2ltcGxlVHlwZTt4cQB+AGx0AAZPYmplY3RzcgATeHNidGkuYXBpLlNpbmdsZXRvbvynX/jPVuRGAgABTAAEcGF0aHQAEEx4c2J0aS9hcGkvUGF0aDt4cQB+AGxzcgAOeHNidGkuYXBpLlBhdGibPVwIzqUnhAIAAVsACmNvbXBvbmVudHN0ABpbTHhzYnRpL2FwaS9QYXRoQ29tcG9uZW50O3hwdXIAGltMeHNidGkuYXBpLlBhdGhDb21wb25lbnQ7Q9oJdC1nFnQCAAB4cAAAAANzcgAMeHNidGkuYXBpLklkmDJsizdTxEACAAFMAAJpZHEAfgANeHIAF3hzYnRpLmFwaS5QYXRoQ29tcG9uZW50X5oiWy6Gn7wCAAB4cHQABGphdmFzcQB+AIV0AARsYW5nc3IADnhzYnRpLmFwaS5UaGlz2wntpsxaQFwCAAB4cQB+AIZzcQB+AHl0AANBbnlzcQB+AH1zcQB+AIB1cQB+AIMAAAACc3EAfgCFdAAFc2NhbGFxAH4AjHNxAH4ATnEAfgBbdXEAfgBcAAAAAHNxAH4AXgBxAH4AM3VxAH4AYAAAAAB+cQB+AGJ0AAZNb2R1bGV1cQB+AGYAAAAAc3EAfgBocQB+AG5zcQB+AGhzcQB+AHBzcQB+AGh1cQB+AEwAAAABc3IADXhzYnRpLmFwaS5EZWZSvp/ifLQ2aQIAAkwACnJldHVyblR5cGV0ABBMeHNidGkvYXBpL1R5cGU7WwAPdmFsdWVQYXJhbWV0ZXJzdAAaW0x4c2J0aS9hcGkvUGFyYW1ldGVyTGlzdDt4cQB+AFJxAH4AW3VxAH4AXAAAAABzcQB+AF4AcQB+AB11cQB+AGAAAAAAc3EAfgB5dAAEVW5pdHNxAH4AfXNxAH4AgHVxAH4AgwAAAAJzcQB+AIVxAH4Ak3EAfgCMdXIAGltMeHNidGkuYXBpLlBhcmFtZXRlckxpc3Q79dM6HfKzcO4CAAB4cAAAAAFzcgAXeHNidGkuYXBpLlBhcmFtZXRlckxpc3TWxbwcZEl04wIAAloACmlzSW1wbGljaXRbAApwYXJhbWV0ZXJzdAAcW0x4c2J0aS9hcGkvTWV0aG9kUGFyYW1ldGVyO3hwAHVyABxbTHhzYnRpLmFwaS5NZXRob2RQYXJhbWV0ZXI7z7jFXaXdtW0CAAB4cAAAAAFzcgAZeHNidGkuYXBpLk1ldGhvZFBhcmFtZXRlch9FrhfTSbDqAgAEWgAKaGFzRGVmYXVsdEwACG1vZGlmaWVydAAdTHhzYnRpL2FwaS9QYXJhbWV0ZXJNb2RpZmllcjtMAARuYW1lcQB+AA1MAAN0cGVxAH4AoXhwAH5yABt4c2J0aS5hcGkuUGFyYW1ldGVyTW9kaWZpZXIAAAAAAAAAABIAAHhxAH4AY3QABVBsYWludAAEYXJnc3NyABd4c2J0aS5hcGkuUGFyYW1ldGVyaXplZBZs7mkDybt/AgACTAAIYmFzZVR5cGVxAH4AelsADXR5cGVBcmd1bWVudHN0ABFbTHhzYnRpL2FwaS9UeXBlO3hxAH4AbHNxAH4AeXQABUFycmF5cQB+AKl1cQB+AHcAAAABc3EAfgB5dAAGU3RyaW5nc3EAfgB9c3EAfgCAdXEAfgCDAAAAA3NxAH4AhXEAfgCIc3EAfgCFcQB+AIpxAH4AjHNxAH4AaHVxAH4ATAAAAABzcQB+AGh1cQB+AHcAAAACc3EAfgB5cQB+AHxxAH4Aw3NxAH4AeXEAfgCOcQB+AKl1cgAUW0x4c2J0aS5hcGkuUGFja2FnZTtbExk3cKcnoQIAAHhwAAAAAHNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABYNSTIs11cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5cQB+AA1MAA9zb3VyY2VEaXJlY3RvcnlxAH4ADXhwdABTL2hvbWVzL21uZjMwL3NwYXJrLXNlYXJjaC1lbmdpbmUvVGZJZGZRdWVyeUVuaWduZUNvbWJpbmVkL3RhcmdldC9zY2FsYS0yLjEwL2NsYXNzZXN0AAEvdXIAAltCrPMX+AYIVOACAAB4cAAAABTjUMRm3sS7OPXnjWv1CM6gbsOVww==
+external apis:
+0 items
+source infos:
+1 items
+/homes/mnf30/spark-search-engine/TfIdfQueryEnigneCombined/src/main/scala/TfIdfQueryEnigneCombined.scala -> 
+AAAAAAAAAAA=
+compilations:
+1 items
+0 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABYNSTIs11cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAUy9ob21lcy9tbmYzMC9zcGFyay1zZWFyY2gtZW5naW5lL1RmSWRmUXVlcnlFbmlnbmVDb21iaW5lZC90YXJnZXQvc2NhbGEtMi4xMC9jbGFzc2VzdAABLw==
