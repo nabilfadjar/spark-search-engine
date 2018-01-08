@@ -128,7 +128,7 @@ object TfIdfQueryEnigneCombined {
             // Save Results in HDFS
             sc.parallelize(tf_idf_set_sort).saveAsTextFile(result_loc + "/search_results_id")
 
-            val postID_asHashSet = sc.broadcast(new HashSet() ++ posts_filter_cos_sort.map(row => (row._1)))
+            val postID_asHashSet = sc.broadcast(new HashSet() ++ tf_idf_set_sort.map(row => (row._1)))
             var tf_idf_set_sort_xml = posts.filter(post => postID_asHashSet.value.contains(post.getId())).map(post => (post.getId(),post.getBody()))
             tf_idf_set_sort_xml.saveAsTextFile(result_loc + "/search_results_xml")
         }
