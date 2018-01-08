@@ -5,12 +5,13 @@ import org.apache.spark.storage.StorageLevel._
 /*
  * Post Class
  */
-class Post(val toBeParsed: String) {
+class Post(var toBeParsed: String) {
     private val postMap = if(isHeaderOrFooter()) null else transformIntoMap()
+    toBeParsed = null;
     private val wordsInBody = extractWordsFromBody()
 
     private def transformIntoMap() : Map[String, String] = {
-        return toBeParsed.split("(=\")|(\"[\\s])|(<[\\w]*)|(/>)").map(_.trim).filter(_.nonEmpty).grouped(2).collect { case Array(k, v) => k -> v }.toMap
+        return toBeParsed.split("(=\")|(\"[\\s])|(<[\\w]*)|(/>)").map(_.trim).filter(_.nonEmpty).grouped(2).collect { case Array(k, v) => k -> v }.toMap.filterKeys(Set("Id","Body"))
     }
 
     private def isHeaderOrFooter() : Boolean = {
