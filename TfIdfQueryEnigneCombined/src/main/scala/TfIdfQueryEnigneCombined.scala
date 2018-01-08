@@ -126,11 +126,11 @@ object TfIdfQueryEnigneCombined {
             val tf_idf_set_sort = tf_idf_set.map(row => (row._2._2, row._2._1)).sortByKey(false).map(row => (row._2, row._1)).take(10)
 
             // Save Results in HDFS
-            sc.parallelize(tf_idf_set_sort).saveAsTextFile(result_loc + "/search_results_id_2")
+            sc.parallelize(tf_idf_set_sort).saveAsTextFile(result_loc + "/search_results_id")
 
             val postID_asHashSet = sc.broadcast(new HashSet() ++ tf_idf_set_sort.map(row => (row._1.toInt)))
             var tf_idf_set_sort_xml = posts.filter(post => postID_asHashSet.value.contains(post.getId())).map(post => (post.getId(),post.getBody()))
-            tf_idf_set_sort_xml.saveAsTextFile(result_loc + "/search_results_xml_2")
+            tf_idf_set_sort_xml.saveAsTextFile(result_loc + "/search_results_xml")
         }
         else {
             /*
