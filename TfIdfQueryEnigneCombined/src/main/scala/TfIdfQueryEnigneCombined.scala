@@ -142,13 +142,15 @@ object TfIdfQueryEnigneCombined {
             // Euclidean distance for Query
             val query_ecd_distance = sc.broadcast(Math.sqrt(query_tf_idf.map(eachQuery => Math.pow(eachQuery._2, 2.0)).reduce(_ + _)))
 
-            //Get Post TF-IDF
-            //val posts_idf = query_idf
+            /*
+             * Get Post TF-IDF
+             * (word, (tf-idf_query, (doc_id, tf-idf_doc)))
+             * (code,(0.8278593324990533,(199,0.007701017046502822)))
+             * (java,(1.6069316415223283,(89,0.08240675084729888)))
+             */
             val posts_filter_tf_idf_set = query_tf_idf.join(tf_idf_set)
 
-            // Sample
-            // (code,(0.8278593324990533,(199,0.007701017046502822)))
-            // (java,(1.6069316415223283,(89,0.08240675084729888)))
+            // Cosine Similarity Operation
             // Dot Product = (query_tf_idf_1 * post_tf_idf) + (query_tf_idf_2 * post_tf_idf) ... + (query_tf_idf_n * post_tf_idf)
             // Euclidean distance = Math.sqrt(Math.pow(query_tf_idf_1,2) + Math.pow(query_tf_idf_2,2) ... + + Math.pow(query_tf_idf_n,2))
             // Cosine Similarity = Dot Product / Cosine Similarity
