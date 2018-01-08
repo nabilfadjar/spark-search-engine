@@ -88,4 +88,4 @@ def hdfs_clear_query_results():
 def hdfs_clear_sample_query_results():
     print("Clearing processed results...")
     local("hadoop fs -rm -R -skipTrash spark-search-engine/sample_results/search_results_id")
-    local("hadoop fs -rm -R -skipTrash spark-search-engine/sample_results/search_results_xml"
+    local("hadoop fs -rm -R -skipTrash spark-search-engine/sample_results/search_results_xml")
